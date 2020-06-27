@@ -1,0 +1,163 @@
+<!--BEGIN: main --><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Open 79XX XML Directory - Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.border {
+	border-top-style: solid;
+	border-right-style: groove;
+	border-bottom-style: groove;
+	border-left-style: solid;
+	border-top-color: #666666;
+	border-right-color: #666666;
+	border-bottom-color: #666666;
+	border-left-color: #666666;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload = "focusLogin()">
+ 
+<p>
+  <script LANGUAGE="JavaScript">
+<!--
+
+
+function confirmSubmit()
+  {
+	if(document.forms[0].id.value == "0") 
+   	{ 
+		errors += " - You are not allowed to delete this.\n";
+		alert(errors);
+		return false ;
+	} else {
+		var agree=confirm("This will delete all of the current database content. \n Are you sure you want to perform the database dump?");
+		if (agree)
+			return true ;
+		else
+			return false ;
+	}
+  }
+	-->
+</script>
+</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<form name="login" method="post" action="">
+  <table width="467" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#333333" bgcolor="#999999" class="border" valign="center">
+    <td width="465" colspan="2" bgcolor="#FFFFFF"><img src="../modules/images/headerofficial.gif" width="465" height="90"></td>
+    <tr> 
+      <td colspan="2" bgcolor="#999999"><div align="center">
+          <div align="center"> </div>
+          <div align="center"> <font color="#000000" face="Arial, Helvetica, sans-serif"><b>XML 
+            Directory Installation</b></font></div>
+          <b></b></div></td>
+    </tr>
+    <tr>
+      <td colspan="2" bgcolor="#D8D8D8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">{completed} 
+          Installing to database<em> {database_name}</em> using<em> {database_login} 
+          </em>as the login.</font></div></td>
+    </tr>
+    <tr > 
+      <td colspan="2" bgcolor="#EFEFEF"> <div align="center">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr> 
+              <td>
+              </td>
+            </tr>
+          </table>
+          
+        </div>
+		<!-- BEGIN: proccess -->
+        <table width="90%" border="0" align="center">
+          <tr valign = "center"> 
+            <center>
+              <td><div align="center">
+                </div>
+                <table width="100%" align="center">
+                  <tr> 
+                    <td width="100%"><font size="3" face="Arial, Helvetica, sans-serif"><strong>Database 
+                      Setup:</strong></font></td>
+                  </tr>
+                  <tr>
+                    <td><div align="center">
+                        <input name="create_database" type="submit" id="create_database" onClick="return confirmSubmit()" value="Create Database">
+                      </div></td>
+                  </tr>
+                </table>
+                <br></div>
+                <div align="left"><font color="#FF0000" size="2" face="Arial, Helvetica, sans-serif"><strong><font size="3">Warning:</font></strong> 
+                  <font color="#000000"><br>
+                  This proccess will delete all current information in the database 
+                  <em>{database_name}.</em></font></font> <br>
+                  <br>
+                  <br>
+                </div></td>
+            </center>
+          </tr>
+        </table>
+		<!-- END: proccess -->
+         <!-- BEGIN: no_broke_link -->
+        <table width="71%" border="1" align="center" cellpadding="5" cellspacing="0" bgcolor="#CCCCCC">
+          <tr> 
+            <td colspan="2"><div align="center"><font face="Arial, Helvetica, sans-serif"><strong>Installation 
+                was Successfull!</strong></font></div></td>
+          </tr>
+          <tr> 
+            <td><font face="Arial, Helvetica, sans-serif">Your Username: </font></td>
+            <td><font face="Arial, Helvetica, sans-serif">{username}</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Arial, Helvetica, sans-serif">Your Password:</font></td>
+            <td><font face="Arial, Helvetica, sans-serif">core</font></td>
+          </tr>
+        </table>
+		  <p align="center"><font face="Arial, Helvetica, sans-serif"><a href="../../WebUI/login.php?newuser=true">Please 
+          Login</a></font> <br><br>
+		  
+	 <!-- END: no_broke_link -->
+       <!-- BEGIN: broke_link -->
+        <table width="71%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td><p><strong><font color="#990000" size="2" face="Arial, Helvetica, sans-serif">Installation 
+                has determined that the default URL base is not working. </font></strong>...</p>
+              <p><a href="{current_url}">{current_url}</a></a></p>
+              <p><strong><font color="#990000" size="2" face="Arial, Helvetica, sans-serif">To 
+                correct this problem, please modify the following URL (this refers 
+                to the PhoneUI/ folder) so that it will work (include any sub-folders):</font></strong></p>
+              <p><strong><font color="#990000" size="2" face="Arial, Helvetica, sans-serif">
+              </font></strong>
+                <label>
+                {ServerBase}
+                <input name="url_base" type="text" value="{url_end}" size="20">
+                </label>
+                <label>
+                <input type="submit" name="update_url" value="Update">
+                </label>
+              </p>
+              <p align="center"><br>
+              </p>            </td>
+          </tr>
+        </table>
+		<!-- END: broke_link -->
+          <!-- BEGIN: failure -->
+        </p>
+        <div align="center"> 
+          <p><font face="Arial, Helvetica, sans-serif">Could not retrieve information 
+            from database.  Please go back and make sure database information is 
+            correct and also check that Apache has permission to modify the file lib/mysql.php .</font> 
+            <!-- END: failure -->
+          </p>
+        </div>
+      </td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>
+<!-- END: main -->

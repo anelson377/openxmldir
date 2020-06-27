@@ -1,0 +1,25 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneInput> 
+	<Title>Starts with...</Title> 
+	<Prompt>Leave field blank to search all.</Prompt> 
+	<URL>{url_base}searchdirectory.php?name={MAC}&amp;srch=contact</URL>
+	<InputItem> 
+			<DisplayName>Last Name</DisplayName> 
+			<QueryStringParam>lname</QueryStringParam> 
+			<InputFlags>A</InputFlags> 
+			<DefaultValue></DefaultValue>
+	</InputItem>
+	<InputItem> 
+			<DisplayName>First Name</DisplayName> 
+			<QueryStringParam>fname</QueryStringParam> 
+			<InputFlags>A</InputFlags> 
+			<DefaultValue></DefaultValue>
+	</InputItem>
+	<InputItem> 
+			<DisplayName>Company</DisplayName> 
+			<QueryStringParam>company</QueryStringParam> 
+			<InputFlags>A</InputFlags> 
+			<DefaultValue></DefaultValue>
+	</InputItem>
+	</CiscoIPPhoneInput>
+<!-- END: main -->

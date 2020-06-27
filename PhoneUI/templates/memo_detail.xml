@@ -1,0 +1,7 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneText>
+  <Title>{title}</Title>
+  <Prompt>By: {sender} - {date}</Prompt>
+  <Text>{msg}</Text>
+</CiscoIPPhoneText>
+<!-- END: main -->

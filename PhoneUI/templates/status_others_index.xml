@@ -1,0 +1,18 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneMenu>
+  <Title>User Status</Title>
+  <Prompt>Choose Option</Prompt>
+  <MenuItem>
+    <Name>Show All ({all})</Name>
+    <URL>{url_base}status.php?others_status=all&amp;name={MAC}</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Available ({num_in})</Name>
+    <URL>{url_base}status.php?others_status=in&amp;name={MAC}</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Unavailable ({num_out})</Name>
+    <URL>{url_base}status.php?others_status=out&amp;name={MAC}</URL>
+  </MenuItem>
+</CiscoIPPhoneMenu>
+<!-- END: main -->

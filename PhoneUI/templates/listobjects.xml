@@ -1,0 +1,20 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneMenu>
+<Title>{heading}</Title>
+<Prompt>Select Object</Prompt>
+<!-- BEGIN: object_menu -->
+<MenuItem>
+<Name>{title}</Name>
+<URL><!-- BEGIN: HREF -->{HREF}<!-- END: HREF --><!-- BEGIN: ObURL -->{url_base}menuItems.php?obj={ID}&amp;name={MAC}<!-- END: ObURL --></URL>
+</MenuItem>
+<!-- END: object_menu -->
+<!-- BEGIN: object_more -->
+<MenuItem>
+<Name>{title}</Name>
+<URL>{url_base}menuItems.php?start={start}&amp;obj={ID}&amp;name={MAC}</URL>
+</MenuItem>
+<!-- END: object_more -->
+</CiscoIPPhoneMenu>
+
+
+<!-- END: main -->

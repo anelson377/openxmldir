@@ -1,0 +1,14 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneMenu>
+  <Title>Status</Title>
+  <Prompt>Your status to inform others</Prompt>
+  <MenuItem>
+    <Name>Available{available}</Name>
+    <URL>{url_base}status.php?in_office=true&amp;name={MAC}</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Unavailable{unavailable}</Name>
+    <URL>{url_base}status.php?in_office=false&amp;name={MAC}</URL>
+  </MenuItem>
+</CiscoIPPhoneMenu>
+<!-- END: main -->

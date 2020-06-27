@@ -1,0 +1,45 @@
+<!-- BEGIN: main -->
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<table width="760" align="center" bgcolor="#DFDFDF">
+  <tr bgcolor="#4E4E4E"> 
+    <form name="form1" method="post" action="">
+      <td height="30" colspan="6"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td> 
+          <tr> 
+            <td height="" colspan="2" valign="center"><font face="Arial, Helvetica, sans-serif"><font color="#000000"> 
+              <strong><font color="#FFFFFF"> Memos </font></strong><a href="index.php?module=help#Memos" target="_blank"><font color="#FFFFFF">(help?)</font></a></font></font></td>
+            <td width="8%"><div align="right"> 
+                <input type="submit" name="submit_add" value="  Post  ">
+              </div></td>
+        </table>
+    </form>
+  </tr>
+  <tr bgcolor="#999999"> 
+    <td width="167"><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_memos&ob=ob_title"><strong>Title</strong></a></font></td>
+    <td width="167"><a href="index.php?module=view_memos&ob=ob_sender"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Sender</strong></font></a></td>
+    <td width="143"><font size="2" face="Arial, Helvetica, sans-serif"><strong><a href="index.php?module=view_memos&ob=ob_date">Date</a></strong></font></td>
+    <td><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_memos&ob=ob_access"><strong>Access</strong></a></font></td>
+    <td width="67"><font size="2" face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;</font></td>
+  </tr>
+  <!-- BEGIN: row -->
+  <tr> 
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=edit_memos&id={id}">{title}</a></font></td>
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{from}</font></td>
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{date}</font></td>
+    <td width "20%" bgcolor="{bg}"> <div align="left"><font face="Arial, Helvetica, sans-serif" size="2">{access}</font></div></td>
+    <td bgcolor="{bg}"> <div align="right"><font face="Arial, Helvetica, sans-serif" size="2"><a href="index.php?module=edit_memos&id={id}" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">edit</a> 
+        | <a href="index.php?module=edit_memos&id={id}&submit_delete=yes" onClick="return confirmSubmit();" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">delete</a></font></div></td>
+  </tr>
+  <!-- END: row -->
+</table>
+<!-- END: main -->

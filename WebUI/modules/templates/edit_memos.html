@@ -1,0 +1,77 @@
+<!-- BEGIN: main -->
+<script LANGUAGE="JavaScript">
+<!--
+function validate_edit_memo()
+  {
+	ok=1;
+	errors = "";
+	if(document.forms[0].msg.value == "") 
+   	{ 
+		errors += " - Message must be entered.\n";
+		ok=0;
+		document.forms[0].msg.focus();
+	}
+	if(document.forms[0].title.value == "") 
+   	{ 
+		errors += " - Title must be entered.\n";
+		ok=0;
+		document.forms[0].title.focus();
+	}
+	if(ok == 0)
+	{
+		alert(errors);
+		return false;
+	}
+	else return true;
+  }
+ 
+// -->
+</script>
+<form name="form1" method="post" action="">
+  <div align="center">
+    <table width="760" bgcolor="#DFDFDF">
+      <tr bgcolor="#4E4E4E">
+        <td height="30" colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Edit Memo </font></b><a href="index.php?module=help#Memos" target="_blank"><font color="#FFFFFF">(help?)</font></a></font></td>
+              <td><div align="right">
+                  <input type="hidden" name="id" value="{id}">
+                  <input type="hidden" name="baseauth" value="{baseauth}">
+                  <input type="hidden" name="action" value="edit">
+                  <input type="submit" name="submit_cancel" value=" Cancel ">
+                  <input type="submit" name="submit_delete" onClick="return confirmSubmit()" value=" Delete ">
+                  <input type="submit" name="submit_save" onClick="return validate_edit_memo()" value="  Save  ">
+                </div></td>
+            </tr>
+          </table></td>
+      </tr>
+      <tr bgcolor="#EFEFEF">
+        <td width="200" bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Title:</font></b></td>
+        <td bgcolor="#EFEFEF"><input type="text" name="title" size="30" maxlength="50" value="{title}">
+          * </td>
+      </tr>
+      <tr bgcolor="#EFEFEF">
+        <td height="25" bgcolor="#EFEFEF"><b><font face="Arial, Helvetica, sans-serif" size="2">Date: </font></b></td>
+        <td height="25" bgcolor="#EFEFEF"><font face="Arial, Helvetica, sans-serif" size="2">{date}</font></td>
+      </tr>
+      <tr bgcolor="#EFEFEF">
+        <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Message:</font></b></td>
+        <td><textarea name="msg" value="msg">{msg}</textarea></td>
+      </tr>
+      <tr bgcolor="#EFEFEF">
+        <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Sender:</font></b></td>
+        <td>{from}</td>
+      </tr>
+      <tr bgcolor="#EFEFEF">
+        <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Access:</font></b></td>
+        <td><select name="access" size="1">
+            <option>{access}</option>
+            <option>{var_access}</option>
+          </select>
+          * </td>
+      </tr>
+    </table>
+  </div>
+</form>
+<div align="center">
+<!-- END: main -->

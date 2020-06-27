@@ -1,0 +1,192 @@
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<!-- BEGIN: main -->
+<!-- BEGIN: cat_exist-->
+<script LANGUAGE="JavaScript">
+<!--
+function validate_edit_contact()
+  {
+	ok=1;
+	errors = "";
+	 if(document.forms[0].member_of.value == "error") 
+   	{ 
+		errors += " You have selected a container, please select a category.\n";
+		ok=0;
+	}
+    if(document.forms[0].member_of.value == "0") 
+   	{ 
+		errors += " - Select a category for this contact to be placed in.\n";
+		ok=0;
+	}
+	if(ok == 0)
+	{
+		alert(errors);
+		return false;
+	}
+	else return true;
+  }
+  function clear_textbox()
+	{
+		if (document.forms[0].custom_phone.value == "Create Custom")
+		{
+			document.forms[0].custom_phone.value =  "";
+		}
+	}
+// -->
+</script>
+<form name="form1" method="post" action="">
+  <div align="center">
+    <table width="760" bgcolor="#DFDFDF">
+      <tr bgcolor="#4E4E4E"> 
+        <td height="30" colspan="2"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Edit 
+                Contact </font></b><font color="#FFFFFF"><a href="index.php?module=help#Contacts_edit" target="_blank"><font color="#FFFFFF">(help?)</font></a></font></font></td>
+              <td> <div align="right"> 
+                  <input type="hidden" name="id" value="{id}">
+                  <input type="hidden" name="baseauth" value="{baseauth}">
+                  <input type="hidden" name="action" value="edit">
+                  <input type="submit" name="submit_cancel" value=" Cancel ">
+                  <input type="submit" name="submit_delete" onClick="return confirmSubmit()" value=" Delete ">
+                  <input type="submit" name="submit_save" onClick="return validate_edit_contact()" value="  Save  ">
+                </div></td>
+            </tr>
+          </table></td>
+      </tr>
+      <!-- BEGIN: own_edit -->
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Owner: 
+          </font></b><font face="Arial, Helvetica, sans-serif" size="1">(who created 
+          this contact)</font></td>
+        <td bgcolor="#EFEFEF"><select name="owner" size="1">
+            <!-- BEGIN: owner_dropdown -->
+            <option value="{user_id}" {selected}>{username}</option>
+            <!-- END: owner_dropdown -->
+          </select></td>
+      </tr>
+      <!-- END: own_edit -->
+      <!-- BEGIN: own_noedit -->
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Owner: 
+          </font></b><font face="Arial, Helvetica, sans-serif" size="1">(who created 
+          this contact)</font></td>
+        <td bgcolor="#EFEFEF"><font color="#000000">{owner}</font></td>
+      </tr>
+      <!-- END: own_noedit -->
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Last 
+          Modified:</font></b></td>
+        <td bgcolor="#EFEFEF"><font color="#000000">{date}</font></td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td width="200" bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Member 
+          Of Contact Holder:</font></b></td>
+        <td bgcolor="#EFEFEF"><select name="member_of" size="1">
+            <!-- BEGIN: member_of_dropdown -->
+            <option  style="color:{color};" value="{category_id}" {selected}>
+            <!-- BEGIN: spacer -->
+            {spacer}
+            <!-- END: spacer -->
+            {member_of}</option>
+            <!-- END: member_of_dropdown -->
+          </select>
+          * </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td width="200" bgcolor="#EFEFEF" height="25"></td>
+        <td bgcolor="#EFEFEF">&nbsp;</td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"> <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">First 
+            Name:</font></b></div></td>
+        <td> <input type="text" name="fname" size="30" maxlength="50" value="{fname}"> 
+        </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"> <p><b><font face="Arial, Helvetica, sans-serif" size="2">Last 
+            Name:</font></b></p></td>
+        <td> <input type="text" name="lname" size="30" maxlength="60" value="{lname}"> 
+        </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Company:</font></b></td>
+        <td> <input type="text" name="company" size="40" maxlength="100" value="{company}"> 
+        </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td width="200" bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2"> 
+          Title:</font></b></td>
+        <td bgcolor="#EFEFEF"><input type="text" name="title" size="30" maxlength="100" value="{title}"> 
+        </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25">&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Phone 
+          Numbers :</font></b></td>
+        <td>&nbsp; </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><font face="Arial, Helvetica, sans-serif" size="2">Office 
+          Phone: </font></td>
+        <td><input type="text" name="office_phone" size="40" maxlength="100" value="{office_phone}"> 
+          <font size="2" face="Arial, Helvetica, sans-serif">Don't dial {prefix} 
+          before number 
+          <input name="sup_prefix_office" type="checkbox" value="sup_prefix_office" {sup_prefix_office_check}>
+          </font> </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><font face="Arial, Helvetica, sans-serif" size="2">Home 
+          Phone: </font></td>
+        <td><input type="text" name="home_phone" size="40" maxlength="100" value="{home_phone}"> 
+          <font size="2" face="Arial, Helvetica, sans-serif">Don't dial {prefix} 
+          before number 
+          <input name="sup_prefix_home" type="checkbox" value="sup_prefix_home" {sup_prefix_home_check}>
+          </font> </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><font face="Arial, Helvetica, sans-serif" size="2">Cell 
+          Phone: </font></td>
+        <td><input type="text" name="cell_phone" size="40" maxlength="100" value="{cell_phone}"> 
+          <font size="2" face="Arial, Helvetica, sans-serif">Don't dial {prefix} 
+          before number 
+          <input name="sup_prefix_cell" type="checkbox" value="sup_prefix_cell" {sup_prefix_cell_check}>
+          </font> </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><font face="Arial, Helvetica, sans-serif" size="2">Other 
+          Phone: </font></td>
+        <td><input type="text" name="other_phone" size="40" maxlength="100" value="{other_phone}"> 
+          <font size="2" face="Arial, Helvetica, sans-serif">Don't dial {prefix} 
+          before number 
+          <input name="sup_prefix_other" type="checkbox" value="sup_prefix_other" {sup_prefix_other_check}>
+          </font> </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><input type="text" name="custom_phone" onFocus="clear_textbox();" size="25" maxlength="100" value="{custom_phone}"></td>
+        <td><input type="text" name="custom_number" size="40" maxlength="100" value="{custom_number}"> 
+          <font size="2" face="Arial, Helvetica, sans-serif">Don't dial {prefix} 
+          before number 
+          <input name="sup_prefix_custom" type="checkbox" value="sup_prefix_custom" {sup_prefix_custom_check}>
+          </font> </td>
+      </tr>
+    </table>
+  </div>
+</form>
+<div align="center">
+  <!-- END: cat_exist -->
+  <!-- BEGIN: add_cat -->
+  <font size="2" face="Arial, Helvetica, sans-serif">You need a category before 
+  you create a contact. Use the <a href="index.php?module=object_listing">object 
+  listings</a> page to add a category</font> 
+  <!-- END: add_cat -->
+  <!-- END: main -->
+</div>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!-- BEGIN: main -->
+<script LANGUAGE="JavaScript">
+<!--
+function clear_textbox()
+{
+	if (document.forms[0].password0.value == "{fake_password}" || document.forms[0].password0.value == "{fake_password}")
+	{
+		document.forms[0].password0.value = "";
+		document.forms[0].password1.value = "";
+	}
+}
+function validate_edit_user()
+  {
+	ok=1;
+	errors = "";
+	if(document.forms[0].username.value == "") 
+	{ 
+		errors += " - Username must be entered.\n";
+		ok=0;
+		document.forms[0].username.focus();
+	}
+	if(document.forms[0].password0.value == "" || document.forms[0].password1.value == "" || document.forms[0].password0.value == "{fake_password}") 
+	{ 
+		errors += " - Blank passwords not supported.\n";
+		ok=0;
+		document.forms[0].password0.focus();
+	}
+	if(document.forms[0].password0.value != document.forms[0].password1.value) 
+	{ 
+		errors += " - Passwords supplied do not match.\n";
+		ok=0;
+		document.forms[0].password0.focus();
+	}
+	if(ok == 0)
+	{
+		alert(errors);
+		return false;
+	}
+	else return true;
+  }
+// -->
+</script>
+
+
+<form name="form1" method="post" action="">
+  <table width="760" align="center" bgcolor="#DFDFDF">
+    <tr bgcolor="#4E4E4E"> 
+      <td colspan="2" height="30"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Edit 
+              User </font></b><a href="index.php?module=help#Web_User_Administration_edit" target="_blank"><font color="#FFFFFF">(help?)</font></a></font></td>
+            <td> <div align="right"> 
+                <input type="hidden" name="id" value="{id}">
+                <input type="hidden" name="baseauth" value="{baseauth}">
+                <input type="hidden" name="action" value="edit">
+                <input type="submit" name="submit_cancel" value=" Cancel ">
+                <!-- BEGIN: notuser -->
+                <input type="submit" name="submit_delete" onClick="return confirmSubmit()" value=" Delete ">
+                <!-- END: notuser -->
+                <input type="submit" name="submit_save" onClick="return validate_edit_user()" value="  Save  ">
+              </div></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td width="200" bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Username: 
+        </font></b></td>
+      <td bgcolor="#EFEFEF"> <input type="text" name="username" size="30" maxlength="50" value="{username}">
+        * </td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td width="200" bgcolor="#EFEFEF" height="25"><b></b></td>
+      <td bgcolor="#EFEFEF"> 
+        <!-- BEGIN: bad_username -->
+        <font size="2" face="Arial, Helvetica, sans-serif">Username taken, please 
+        choose another.</font> 
+        <!-- END: bad_username -->
+      </td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td width="200" bgcolor="#EFEFEF" height="25"> <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">Assign 
+          Password: </font></b></div></td>
+      <td bgcolor="#EFEFEF"><input type="password" name="password0" onFocus="clear_textbox();" size="30" maxlength="50" value="{fake_password}">
+        *</td>
+    </tr>
+    <tr bgcolor="#EFEFEF">
+      <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2"> 
+        Repeat Password: </font></b></td>
+      <td bgcolor="#EFEFEF"><input type="password" name="password1" onFocus="clear_textbox();" size="30" maxlength="50" value="{fake_password}">
+        *</td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Email: 
+        <br>
+        </font></b></td>
+      <td bgcolor="#EFEFEF"><input type="text" name="email" size="30" maxlength="50" value="{email}"></td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Account 
+        Type:</font></b></td>
+      <td bgcolor="#EFEFEF"><select name="account_type">
+          <option>{account_type}</option>
+          <option>{var_account_type}</option>
+        </select>
+        *</td>
+    </tr>
+  </table>
+</form>
+<!-- END: main -->

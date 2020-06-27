@@ -1,0 +1,18 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneMenu>
+<Title>{heading}</Title>
+<Prompt>{prompt}</Prompt>
+<!-- BEGIN: contact_menu -->
+<MenuItem>
+<Name>{title}</Name>
+<URL>{url_base}status.php?ur={ID}&amp;name={MAC}</URL>
+</MenuItem>
+<!-- END: contact_menu -->
+<!-- BEGIN: contact_more -->
+<MenuItem>
+<Name>{title}</Name>
+<URL>{url_base}status.php?start={start}&amp;others_status={others_status}&amp;name={MAC}</URL>
+</MenuItem>
+<!-- END: contact_more -->
+</CiscoIPPhoneMenu>
+<!-- END: main -->

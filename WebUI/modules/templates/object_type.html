@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<!-- BEGIN: main -->
+<body vlink="#000099" alink="#000099">
+<script LANGUAGE="JavaScript">
+<!--
+function validate_edit_user()
+  {
+	ok=1;
+	errors = "";
+    if(document.forms[0].fname.value == "") 
+   	{ 
+		errors += " - First name must be entered.\n";
+		ok=0;
+	}
+    if(document.forms[0].lname.value == "") 
+   	{ 
+		errors += " - Last name must be entered.\n";
+		ok=0;
+	}
+	if(ok == 0)
+	{
+		alert(errors);
+		return false;
+	}
+	else return true;
+  }
+// -->
+</script>
+<form name="form1" method="post" action="">
+  <div align="center">
+    <table width="760" bgcolor="#DFDFDF">
+      <tr bgcolor="#4E4E4E"> 
+        <td colspan="2" height="30"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Object 
+                Type </font></b></font></td>
+              <td> <div align="right"> 
+                  <input type="hidden" name="id" value="{id}">
+                  <input type="hidden" name="baseauth" value="{baseauth}">
+                  <input type="hidden" name="action" value="edit">
+                  <input type="submit" name="submit_cancel" value=" Cancel ">
+                </div></td>
+            </tr>
+          </table></td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td width="267" bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Choose 
+          what type of object to create: </font></b></td>
+        <td width="395" bgcolor="#EFEFEF"> <select name="type">
+            <option>Container</option>
+            <option value="Category">Contact Holder</option>
+            <option>Link</option>
+          </select> <input type="submit" name="submit_create" value="  Create  "></td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td width="267" bgcolor="#EFEFEF" height="25"><b></b></td>
+        <td bgcolor="#EFEFEF">&nbsp; </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td width="267" bgcolor="#EFEFEF" height="25"> <div align="left"><b></b></div></td>
+        <td bgcolor="#EFEFEF">&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+</form>
+<div align="center"><!-- END: main --></div>
+</body>
+</html>

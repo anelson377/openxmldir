@@ -1,0 +1,12 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneDirectory>
+<Title>{heading}</Title>
+<Prompt>Dial</Prompt>
+<!-- BEGIN: dir_entry -->
+<DirectoryEntry>
+<Name>{name} -{type}</Name>
+<Telephone>{number}</Telephone>
+</DirectoryEntry>
+<!-- END: dir_entry -->
+</CiscoIPPhoneDirectory>
+<!-- END: main -->

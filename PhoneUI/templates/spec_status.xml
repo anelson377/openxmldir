@@ -1,0 +1,26 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneMenu>
+  <Title>User Status</Title>
+  <Prompt>Select Message</Prompt>
+  <MenuItem>
+    <Name>No Message{9}</Name>
+    <URL>{url_base}status.php?location={location}&amp;msg=9&amp;name={MAC}</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Not taking calls.{1}</Name>
+    <URL>{url_base}status.php?location={location}&amp;msg=1&amp;name={MAC}</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Please call me.{2}</Name>
+    <URL>{url_base}status.php?location={location}&amp;msg=2&amp;name={MAC}</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Stepped out, brb.{3}</Name>
+    <URL>{url_base}status.php?location={location}&amp;msg=3&amp;name={MAC}</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Custom Message{0}</Name>
+    <URL>{url_base}status.php?location={location}&amp;msg=0&amp;name={MAC}</URL>
+  </MenuItem>
+</CiscoIPPhoneMenu>
+<!-- END: main -->

@@ -1,0 +1,137 @@
+<!-- BEGIN: main -->
+<script LANGUAGE="JavaScript">
+<!--
+function focusLogin() {
+			document.forms[0].title.focus();
+	    }
+function validate_edit_object()
+  {
+	ok=1;
+	errors = "";
+	if(document.forms[0].title.value == "") 
+   	{ 
+		errors += " - Title must be entered.\n";
+		ok=0;
+		document.forms[0].title.focus();
+	}
+	<!-- BEGIN: link_java -->
+	if(document.forms[0].href.value == "") 
+   	{ 
+		errors += " - Link must be entered.\n";
+		ok=0;
+		document.forms[0].href.focus();
+	}
+	<!-- END: link_java -->
+	<!-- BEGIN: cat_java -->
+	function popitup(url)
+	{
+	newwindow=window.open(url,'name','height=200,width=150');
+	if (window.focus) {newwindow.focus()}
+	return false;
+	}
+
+// -->
+	<!-- END: cat_java -->
+	if(ok == 0)
+	{
+		alert(errors);
+		return false;
+	}
+	else return true;
+  }
+  function newwindow() {
+ newwindow=window.open('index.php?module=help#Style','newwindow','height=571,resizable=1,scrollbars=1,width=770,menubar=1');
+ if (window.focus) {newwindow.focus()}
+ }
+ 
+// -->
+</script>
+
+
+<form name="form1" method="post" action="" onload = "focusLogin()">
+  <div align="center">
+    <table width="760" bgcolor="#DFDFDF">
+      <tr bgcolor="#4E4E4E"> 
+        <td height="30" colspan="2"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td width="39%"><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Edit 
+                {type}</font></b> <a href="index.php?module=help#Edit_Object" target="_blank"><font color="#FFFFFF">(help?)</font></a></font></td>
+              <td width="61%"> <div align="right"><b><a href="index.php?module=tree#{id}"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Preview</font><font color="#FFFFFF"><img border="0" src="WebUI/modules/images/preview.gif" width="18" height="18"></font></a></b> 
+                  <input type="hidden" name="id" value="{id}">
+                  <input type="hidden" name="action" value="edit">
+                  <input type="submit" name="submit_cancel" value=" Cancel ">
+                  <input type="submit" name="submit_delete" onClick="return confirmSubmit()" value=" Delete ">
+                  <input type="submit" name="submit_save" onClick="return validate_edit_object()" value="  Save  ">
+                </div></td>
+            </tr>
+          </table></td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td width="200" bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Title:</font></b></td>
+        <td bgcolor="#EFEFEF"><input type="text" name="title" size="30" maxlength="50" value="{title}">
+          * </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td width="200" bgcolor="#EFEFEF" height="25"><b></b></td>
+        <td bgcolor="#EFEFEF">&nbsp; </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td width="200" bgcolor="#EFEFEF" height="25"> <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">Member 
+            Of: </font></b></div></td>
+        <td bgcolor="#EFEFEF"><select name="member_of" size="1">
+                  <!-- BEGIN: member_of_dropdown -->
+                  <option value="{container_id}" {selected}><!-- BEGIN: spacer -->{spacer}<!-- END: spacer -->{member_of}</option>
+                  <!-- END: member_of_dropdown -->
+          </select>
+          <font face="Arial, Helvetica, sans-serif">{main}</font></td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25">&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <!-- BEGIN: style -->
+        <td bgcolor="#EFEFEF" height="25"> <div align="left"><b><font size="2" face="Arial, Helvetica, sans-serif">Style: 
+            </font></b></div></td>
+        <td><select name="style" size="1">
+            <option>{style}</option>
+            <option>{var_style}</option>
+          </select>
+          *<b><font size="1" face="Arial, Helvetica, sans-serif">&nbsp;<a href="javascript:newwindow()">What 
+          is Style?</a></font></b></td>
+      <tr bgcolor="#EFEFEF"> 
+        <td height="25" colspan="2" bgcolor="#EFEFEF"><font size="2" face="Arial, Helvetica, sans-serif">&nbsp; 
+          </font></td>
+        <!-- END: style -->
+      </tr>
+      <!--BEGIN: style -->
+      <!--END: style -->
+      <!-- BEGIN: link -->
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Link:</font></b></td>
+        <td> <input type="text" name="href" size="70" maxlength="200" value="{href}">
+          * </td>
+      </tr>
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25">&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+	  <!-- END: link -->
+      <tr bgcolor="#EFEFEF"> 
+        <td bgcolor="#EFEFEF" height="25"><b><font face="Arial, Helvetica, sans-serif" size="2">Access 
+          Level:</font></b></td>
+        <td><select name="access" size="1">
+            <option>{access}</option>
+            <option>{var_access}</option>
+          </select>
+          * </td>
+      </tr>
+    </table>
+  </div>
+</form>
+<div align="center">
+  <!-- END: main -->
+</div>
+<p>&nbsp;</p>
+</body>
+</html>

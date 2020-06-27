@@ -1,0 +1,38 @@
+<!-- BEGIN: main -->
+<body vlink="#000099" alink="#000099">
+<table width="760" align="center" bgcolor="#DFDFDF">
+  <tr bgcolor="#4E4E4E"> 
+    <td height="30" colspan="5"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <form name="form1" method="post" action="">
+          <tr> 
+            <td colspan="2"><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Phone 
+              Registrations </font></b><a href="index.php?module=help#Phone_Registration" target="_blank"><font color="#FFFFFF">(help?)</font></a></font> 
+              <div align="right"> </div></td>
+            <td><div align="right"> 
+                <input type="submit" name="submit_add" value="  Add  ">
+              </div></td>
+          </tr>
+        </form>
+      </table></td>
+  </tr>
+  <tr bgcolor="#999999"> 
+    <td width="185"><strong><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_phones&ob=ob_MAC">MAC 
+      Address</a></font></strong></td>
+    <td width="105"><strong><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_phones&ob=ob_access_lvl">Access 
+      Level</a></font></strong></td>
+    <td width="204"><strong><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_phones&ob=ob_ln">Last,First Name</a></font></strong></td>
+    <td width="168"><strong><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_phones&ob=ob_num">Number</a></font></strong></td>
+    <td width="74">&nbsp;</td>
+  </tr>
+  <!-- BEGIN: row -->
+  <tr> 
+    <td bgcolor="{bg}"><font face="Arial, Helvetica, sans-serif" size="2"><a href="index.php?module=edit_phone&id={id}" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">{MAC}</a></font></td>
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{access_lvl}</font></td>
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{name}</font></td>
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{number}</font></td>
+    <td bgcolor="{bg}"><div align="right"><font face="Arial, Helvetica, sans-serif" size="2"><a href="index.php?module=edit_phone&id={id}" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">edit</a> 
+        | <a href="index.php?module=edit_phone&id={id}&submit_delete=yes" onClick="return confirmSubmit();" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">delete</a></font></div></td>
+  </tr>
+  <!-- END: row -->
+</table>
+<!-- END: main -->

@@ -1,0 +1,18 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneMenu>
+  <Title>User Status</Title>
+  <Prompt>Select an Option</Prompt>
+  <MenuItem>
+    <Name>Show All Users</Name>
+    <URL>{url_base}status.php?status_others_index=true&amp;name={MAC}</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>My Status</Name>
+    <URL>{url_base}status.php?view_my_status=true&amp;name={MAC}</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Change My Status</Name>
+    <URL>{url_base}status.php?my_status=true&amp;name={MAC}</URL>
+  </MenuItem>
+</CiscoIPPhoneMenu>
+<!-- END: main -->

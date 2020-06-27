@@ -1,0 +1,92 @@
+<!-- BEGIN: main -->
+<script LANGUAGE="JavaScript">
+<!--
+function validate_edit_contact()
+  {
+	ok=1;
+	errors = "";
+    
+	if (document.forms[0].radiobutton[0].checked == true)
+	{
+		if(document.forms[0].member_of.value == "1") 
+		{ 
+		
+			errors += " - Select a category for these objects to be placed in.\n";
+			ok=0;
+		} else {
+			ok=1;
+		}	
+	} else {
+		var agree=confirm("Are you sure you want to delete these contacts?");
+		if (agree)
+			return true ;
+		else
+			return false ;
+	}
+	if(ok == 0)
+	{
+		alert(errors);
+		return false;
+	}
+	else return true;
+  }
+// -->
+</script>
+<table width="760" align="center" bgcolor="#DFDFDF">
+  <tr bgcolor="#4E4E4E"> 
+    <td width="744" height="30" colspan="5"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="25%"><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Warning: 
+              The following contacts will be affected:</font></b></font> <div align="right"> 
+              </div></td>
+          </tr>
+      </table></td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td bgcolor="{bg}"><table width="85%" border="0" align="center" bgcolor="#999999">
+        <tr> 
+          <td><table width="522" align="center" bgcolor="#DFDFDF">
+              <tr bgcolor="#999999"> 
+                <td width='233'><strong><font size="2" face="Arial, Helvetica, sans-serif">Last,First 
+                  Name</font></strong></td>
+                <td width='192'><strong><font size="2" face="Arial, Helvetica, sans-serif">Title</font></strong></td>
+                <td width="157"><strong><font size="2" face="Arial, Helvetica, sans-serif">Company</font></strong></td>
+              </tr>
+              <!-- BEGIN: row -->
+              <tr> 
+                <td bgcolor="{bg}"><font face="Arial, Helvetica, sans-serif" size="2"><a href="index.php?module=edit_contact&id={id}" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">{lname}, 
+                  {fname}</a></font></td>
+                <td width="192" bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{title}</font></td>
+                <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{company}</font></td>
+              </tr>
+              <!-- END: row -->
+            </table></td>
+        </tr>
+      </table>
+      <div align="center"></div>
+      <p><font size="2" face="Arial, Helvetica, sans-serif">Would you like to: 
+        </font></p>
+      <blockquote> 
+        <form name="form1" method="post" action="">
+          <p> <font size="2" face="Arial, Helvetica, sans-serif"> 
+            <input name="radiobutton" type="radio" value="reassign" checked>
+            Reassign them to: 
+            <select name="member_of" size="1">
+              <!-- BEGIN: member_of_dropdown -->
+              <option value="{category_id}" {selected}>{member_of}</option>
+              <!-- END: member_of_dropdown -->
+            </select>
+            </font></p>
+          <p> <font size="2" face="Arial, Helvetica, sans-serif"> 
+            <input type="radio" name="radiobutton" value="delete">
+            Delete them</font></p>
+          <p> 
+            <input type="submit" name="submit_cancel" value=" Cancel ">
+            <input type="submit" name="submit_confirm" onClick="return validate_edit_contact()" value=" Confirm ">
+          </p>
+        </form>
+        <p>&nbsp;</p>
+      </blockquote></td>
+  </tr>
+</table>
+<!-- END: main -->

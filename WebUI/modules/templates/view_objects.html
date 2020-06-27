@@ -1,0 +1,81 @@
+<!-- BEGIN: main --> 
+<body vlink="#000099" alink="#000099">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+ 
+<table width="760" align="center" bgcolor="#DFDFDF">
+  <tr bgcolor="#4E4E4E"> 
+    <form name="form1" method="post" action="">
+      <td height="30" colspan="5"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td colspan="2"> 
+          <tr> 
+            <td width="22%"><font face="Arial, Helvetica, sans-serif"><font color="#000000"> 
+              <strong><font color="#FFFFFF">Objects</font></strong> <a href="index.php?module=help#Objects" target="_blank"><font color="#FFFFFF">(help?)</font></a></font></font> <div align="right"> </div></td>
+            <td width="57%"><div align="right"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif" style="font-size: 8pt;">View 
+                objects in Container
+                <select name="member_of" size="1">
+				<!-- END: main -->
+                  <!-- BEGIN: member_of_dropdown -->
+                  <option value="{container_id}" {selected}><!-- BEGIN: spacer -->{spacer}<!-- END: spacer -->{member_of}</option>
+                  <!-- END: member_of_dropdown -->
+				  <!-- BEGIN: main2 -->
+                </select>
+                </font></div></td>
+            <td width="11%"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif" style="font-size: 8pt;"> 
+              &nbsp; 
+              <input type="submit" name="Submit" value="Search">
+              </font></td>
+            <td width="10%"><div align="right"> 
+                <input type="submit" name="submit_add" value="  Add  ">
+              </div></td>
+          <tr>
+            <td>&nbsp;</td>
+            <td><div align="right"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif" style="font-size: 8pt;">and 
+                object type is 
+              
+				<select name="type">
+                  <!-- BEGIN: type -->
+                  <option {selected}>{type}</option>
+                  <!-- END: type -->
+                </select>
+                </font></div></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          <tr> </table>
+    </form>
+  </tr><!-- END: main2 -->
+  <!-- BEGIN: column -->
+  <tr bgcolor="#999999"> 
+    <td width="477"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Title</strong></font></td>
+    <td width="100"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Type</strong>&nbsp;</font></td>
+    <td><font size="2" face="Arial, Helvetica, sans-serif"><strong>Access</strong></font></td>
+    <td width="74"><font size="2" face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;</font></td>
+  </tr>
+   <!-- END: column -->
+
+  <!-- BEGIN: row -->
+  <tr> 
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif"> 
+     <!-- BEGIN: spacer -->{spacer}<!-- END: spacer -->
+	 
+	  <!-- BEGIN: object -->
+      <font face="Arial, Helvetica, sans-serif"><a href="index.php?module=edit_object&id={id}" NAME="{id}"><font color="#000000">{title}</font></a></font><font color="#000000" size="1"></font> 
+      <!-- END: object -->
+      </font></td>
+
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{type}</font></td>
+    <td width "20%" bgcolor="{bg}"> <div align="left"><font face="Arial, Helvetica, sans-serif" size="2">{access}</font></div></td>
+    <td bgcolor="{bg}"> <div align="right"><font face="Arial, Helvetica, sans-serif" size="2"><a href="index.php?module=edit_object&id={id}" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">edit</a> 
+        | <a href="index.php?module=edit_object&id={id}&submit_delete=yes&mbr_of={mbr_of}&drop_type={drop_type}" onClick="return confirmSubmit();" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">delete</a></font></div></td>
+  </tr>
+  <!-- END: row -->
+</table>    

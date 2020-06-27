@@ -1,0 +1,37 @@
+<!-- BEGIN: main -->
+<body vlink="#000099" alink="#000099">
+<table width="760" align="center" bgcolor="#DFDFDF">
+  <tr bgcolor="#4E4E4E"> 
+    <td colspan="4" height="30"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <form name="form1" method="post" action="">
+          <tr> 
+            <td colspan="2"><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Web 
+              User Administration</font></b> <a href="index.php?module=help#Web_User_Administration" target="_blank"><font color="#FFFFFF">(help?)</font></a></font> 
+              <div align="right"> </div></td>
+            <td><div align="right"> 
+                <input type="submit" name="submit_add" value="  Add  ">
+              </div></td>
+          </tr>
+        </form>
+      </table></td>
+  </tr>
+  <tr bgcolor="#999999"> 
+    <td width="30%"><strong><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_users&ob=ob_username">Username</a></font></strong></td>
+    <td width="35%"><strong><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_users&ob=ob_email">Email</a></font></strong></td>
+    <td width="10%"><strong><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_users&ob=ob_account_type">Account 
+      Type</a></font></strong></td>
+    <td width="10%"><font size="2" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
+  </tr>
+  <!-- BEGIN: row -->
+  <tr> 
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=edit_user&id={id}">{username}</a><br>
+      </font></td>
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{email}</font></td>
+    <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{account_type}</font></td>
+    <td bgcolor="{bg}"><div align="right"><font face="Arial, Helvetica, sans-serif" size="2"><a href="index.php?module=edit_user&id={id}" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">edit</a> 
+        | <a href="index.php?module=edit_user&id={id}&submit_delete=yes" onClick="return confirmSubmit();" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">{delete}</a></font></div></td>
+  </tr>
+  <!-- END: row -->
+</table>
+<!-- END: main -->
+

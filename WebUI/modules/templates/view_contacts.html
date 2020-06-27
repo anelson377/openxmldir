@@ -1,0 +1,74 @@
+<!-- BEGIN: main -->
+<script LANGUAGE="JavaScript">
+<!--
+function validate_search()
+  {
+	ok=1;
+	errors = "";
+    if(document.forms[0].member_of.value == "error") 
+   	{ 
+		errors += " You have selected a container, please select a category.\n";
+		ok=0;
+	}
+	if(ok == 0)
+	{
+		alert(errors);
+		return false;
+	}
+	else return true;
+  }
+// -->
+</script>
+<body vlink="#000099" alink="#000099">
+<table width="760" align="center" bgcolor="#DFDFDF">
+  <tr bgcolor="#4E4E4E"> 
+    <td height="30" colspan="10"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <form name="form1" method="post" action="">
+          <tr> 
+            <td width="18%"><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Contacts 
+              </font></b><a href="index.php?module=help#Contacts" target="_blank"><font color="#FFFFFF">(help?)</font></a></font> <div align="right"> </div></td>
+            <td width="64%"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif" style="font-size: 8pt;">View 
+              Contacts in Contact Holder 
+              <select name="member_of" size="1">
+                <!-- BEGIN: member_of_dropdown -->
+                  <option  style="color:{color};" value="{category_id}" {selected}><!-- BEGIN: spacer -->{spacer}<!-- END: spacer -->{member_of}</option>
+                  <!-- END: member_of_dropdown -->
+              </select>
+              <input type="submit" onClick="return validate_search()" name="view" value="Search">
+              </font></td>
+            <td width="18%"><div align="right"> 
+                <input type="submit" name="submit_add" value="  Add  ">
+                <input type="submit" name="submit_import" value="  Import  ">
+              </div></td>
+          </tr>
+        </form>
+      </table></td>
+  </tr>
+  <!-- BEGIN: column -->
+  <tr bgcolor="#999999"> 
+   
+    <td width='216'><strong><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_contacts&ob=ob_ln&mbr_of={mbr_of}">Last,First 
+      Name</a></font></strong></td>
+    <td width='145'><strong><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_contacts&ob=ob_title&mbr_of={mbr_of}">Title</a></font></strong></td>
+    <td width='170'><strong><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_contacts&ob=ob_company&mbr_of={mbr_of}">Company</a></font></strong></td>
+    <td width='170'><strong><font size="2" face="Arial, Helvetica, sans-serif"><strong>Member 
+      Of </strong></font></strong></td>
+    <td width="74">&nbsp;</td>
+  </tr>
+  <!-- END: column -->
+  <!-- BEGIN: row -->
+  <tr> 
+    <td bgcolor="{bg}"><font face="Arial, Helvetica, sans-serif" size="2"><a href="index.php?module=edit_contact&id={id}" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">{lname}, 
+      {fname}</a></font></td>
+    <td width="145" bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{title}</font></td>
+    <td width="170" bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{company}</font></td>
+    <td width="170" bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{category}</font></td>
+    <td bgcolor="{bg}"><div align="right"><font face="Arial, Helvetica, sans-serif" size="2"><a href="index.php?module=edit_contact&id={id}" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">edit</a> 
+        | <a href="index.php?module=edit_contact&id={id}&submit_delete=yes&mbr_of={mbr_of}" onClick="return confirmSubmit();" style="text-decoration: none;" onMouseOver="this.style.textDecoration='underline';" onMouseOut="this.style.textDecoration='none';">delete</a></font></div></td>
+  </tr>
+  <!-- END: row -->
+</table>
+<!-- BEGIN: breaks -->
+<p></p><br><br>
+<!-- END: breaks -->
+<!-- END: main -->

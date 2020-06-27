@@ -1,0 +1,61 @@
+<!-- BEGIN: header --> 
+ <script LANGUAGE="JavaScript">
+<!--
+function newwindow() {
+ newwindow=window.open('index.php?module=tree&view=print','newwindow','height=400,scrollbars,width=600,menubar=1');
+ if (window.focus) {newwindow.focus()}
+ }
+// -->
+</script>
+<table width="700" border="0" align="center">
+  <tr> 
+    <td><font size="3" face="Arial, Helvetica, sans-serif" color="#000000"><strong>Preview 
+      All</strong></font></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="66%"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><img src="WebUI/modules/images/tree_icon_container.gif" width="20" height="13"> 
+      = Container, <img src="WebUI/modules/images/tree_icon_category.gif" width="15" height="12"> 
+      = Contact Holder, <img src="WebUI/modules/images/tree_icon_link.gif" width="20" height="13"> 
+      = Link</font></td>
+    <td width="34%"><form name="Print" method="post" action="">
+        <div align="right"> 
+          <input type="submit" onClick="return newwindow()" name="Print" value="Print">
+        </div>
+      </form></td>
+  </tr>
+  <tr> 
+    <td colspan="2"><hr noshade></td>
+  </tr>
+</table>
+<table width="600" border="0" align="center" cellpadding="15" bgcolor="#EFEFEF">
+  <tr> 
+    <td> 
+      <!-- END: header -->
+      <p> 
+        <!-- BEGIN: container -->
+        <font face="Arial, Helvetica, sans-serif"> <img src="WebUI/modules/images/tree_icon_container.gif" width="20" height="13"> 
+        <a href="index.php?module=edit_object&id={id}" NAME="{id}"><font color="#000000">{title}</font></a></font><font color="#000000" size="1"><font face="Arial, Helvetica, sans-serif">{access_lvl}</font></font><br>
+        <!-- END: container -->
+        <!-- BEGIN: category -->
+        <font face="Arial, Helvetica, sans-serif"> <img src="WebUI/modules/images/tree_icon_category.gif" width="15" height="12"> 
+        <a href="index.php?module=edit_object&id={id}" NAME="{id}"><font color="#000000">{title}</font></a></font><font color="#000000" size="1"><font face="Arial, Helvetica, sans-serif">{access_lvl}</font></font><br>
+        <!-- END: category -->
+        <!-- BEGIN: link -->
+        <font face="Arial, Helvetica, sans-serif"><img src="WebUI/modules/images/tree_icon_link.gif" width="20" height="13"> 
+        <a href="index.php?module=edit_object&id={id}" NAME="{id}"><font color="#000000">{title}</font></a></font><font color="#000000" size="1"><font face="Arial, Helvetica, sans-serif">{access_lvl}</font></font><br>
+        <!-- END: link -->
+        <!-- BEGIN: spacer -->
+        <font face="Arial, Helvetica, sans-serif">{spacer}</font> <img src="WebUI/modules/images/treespacer.gif" width="19" height="22"> 
+        <!-- END: spacer -->
+        <!-- BEGIN: spacer_blank -->
+        <font face="Arial, Helvetica, sans-serif">{spacer}</font> <img src="WebUI/modules/images/spacer.gif" width="19" height="22"> 
+        <!-- END: spacer_blank -->
+        <!-- BEGIN: end -->
+      </p></td>
+  </tr>
+</table>
+<br>
+<!-- END: end -->
+</body>
+</html>

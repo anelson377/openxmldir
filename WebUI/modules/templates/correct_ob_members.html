@@ -1,0 +1,94 @@
+<!-- BEGIN: main -->
+<script LANGUAGE="JavaScript">
+<!--
+function validate_edit_object()
+  {
+	ok=1;
+	errors = "";
+    
+	if (document.forms[0].radiobutton[0].checked == true)
+	{
+		if(document.forms[0].member_of.value == "1") 
+		{ 
+		
+			errors += " - Select a category for these objects to be placed in.\n";
+			ok=0;
+		} else {
+			ok=1;
+		}	
+	} else {
+		var agree=confirm("If the objects listed here are containers or categories, they may have objects or contacts within them. If so it is recommended that you reassign them.  Are you sure you want to delete?");
+			if (agree)
+				return true ;
+			else
+				return false ;
+	}
+	if(ok == 0)
+	{
+		alert(errors);
+		return false;
+	}
+	else return true;
+  }
+// -->
+</script>
+<table width="760" align="center" bgcolor="#DFDFDF">
+  <tr bgcolor="#4E4E4E"> 
+    <td width="744" height="30" colspan="5"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            
+          <td width="25%"><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Warning: 
+            The following objects will be affected:</font></b></font> 
+            <div align="right"> 
+              </div></td>
+          </tr>
+      </table></td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td bgcolor="{bg}">
+<div align="center">
+        <table width="85%" border="0" align="center" bgcolor="#999999">
+          <tr> 
+            <td><table width="500" align="center" bgcolor="#DFDFDF">
+                <tr bgcolor="#999999"> 
+                  <td width="45%"><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=view_objects&ob=ob_title&mbr_of={mbr_of}&drop_type={drop_type}"><strong>Title</strong></a></font></td>
+                  <td width="%"><font size="2" face="Arial, Helvetica, sans-serif"><strong><a href="index.php?module=view_objects&ob=ob_type&mbr_of={mbr_of}&drop_type={drop_type}">Type</a></strong>&nbsp;</font></td>
+                  <td><font size="2" face="Arial, Helvetica, sans-serif">&nbsp;<a href="index.php?module=view_objects&ob=ob_access&mbr_of={mbr_of}&drop_type={drop_type}"><strong>Access</strong></a></font></td>
+                </tr>
+                <!-- BEGIN: row -->
+                <tr> 
+                  <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif"><a href="index.php?module=edit_object&id={id}">{title}</a></font></td>
+                  <td bgcolor="{bg}"><font size="2" face="Arial, Helvetica, sans-serif">{type}</font></td>
+                  <td width "20%" bgcolor="{bg}"> <div align="left"><font face="Arial, Helvetica, sans-serif" size="2">{access}</font></div></td>
+                </tr>
+                <!-- END: row -->
+              </table></td>
+          </tr>
+        </table>
+      </div>
+      <p><font size="2" face="Arial, Helvetica, sans-serif">Would you like to: 
+        </font></p>
+      <blockquote> 
+        <form name="form1" method="post" action="">
+          <p> <font size="2" face="Arial, Helvetica, sans-serif"> 
+            <input name="radiobutton" type="radio" value="reassign" checked>
+            Reassign them to: 
+            <select name="member_of" size="1">
+              <!-- BEGIN: member_of_dropdown -->
+              <option value="{container_id}" {selected}>{member_of}</option>
+              <!-- END: member_of_dropdown -->
+            </select>
+            </font></p>
+          <p> <font size="2" face="Arial, Helvetica, sans-serif"> 
+            <input type="radio" name="radiobutton" value="delete">
+            Delete them</font></p>
+          <p> 
+            <input type="submit" name="submit_cancel" value=" Cancel ">
+            <input type="submit" name="submit_confirm" onClick="return validate_edit_object()" value=" Confirm ">
+          </p>
+        </form>
+        <p>&nbsp;</p>
+      </blockquote></td>
+  </tr>
+</table>
+<!-- END: main -->

@@ -1,0 +1,68 @@
+<!-- BEGIN: main -->
+<form name="form1" method="post" action="">
+  <table width="760" align="center" bgcolor="#DFDFDF">
+    <tr bgcolor="#333333"> 
+      <td height="30" bgcolor="#4E4E4E"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="54%"><font face="Arial, Helvetica, sans-serif"><b><font color="#FFFFFF">Global 
+              Preferences </font></b><a href="index.php?module=help#Global_Preferences" target="_blank"><font color="#FFFFFF">(help?)</font></a></font></td>
+            <td width="46%"> <div align="right"> 
+                <input type="hidden" name="baseauth" value="{baseauth}">
+                <input type="hidden" name="action" value="edit">
+                <input type="submit" name="submit_cancel" value=" Cancel ">
+                <input type="submit" name="submit_save" value="  Save  ">
+              </div></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td height="25" bgcolor="#EFEFEF"><b><font face="Arial, Helvetica, sans-serif" size="2">Enable 
+        Phone Security: </font></b> <input name="ph_sec" type="checkbox" value="ph_sec" {ph_sec_check} > 
+      </td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td height="25" bgcolor="#EFEFEF"><font size="2" face="Arial, Helvetica, sans-serif">Phone 
+        security prevents unregistered phones from viewing the directory. If phone 
+        security is disabled, all unregistered phones will have access to objects 
+        marked 'Public'.</font></td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td height="25" bgcolor="#EFEFEF"> <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">Enable 
+          Object Security:</font></b> 
+          <input name="ob_sec" type="checkbox" value="ob_sec" {ob_sec_check} >
+        </div></td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td height="25" bgcolor="#EFEFEF"><font size="2" face="Arial, Helvetica, sans-serif">Object 
+        security allows restriction of phones to either 'Public' or 'Private' 
+        data based on each phones security level.</font></td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td height="25" bgcolor="#EFEFEF"> <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">Enable 
+          Prefix:</font></b> 
+          <input name="ph_prfx" type="checkbox" value="ph_prfx" {ph_prfx_check} >
+          <b><font face="Arial, Helvetica, sans-serif" size="2">Prefix:</font></b> 
+          <input type="text" name="prefix" value="{prefix}">
+        </div></td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td height="25" bgcolor="#EFEFEF"><font size="2" face="Arial, Helvetica, sans-serif">Enabling 
+        the prefix will automatically attach a prefix to the front of all contact 
+        numbers.</font></td>
+    </tr>
+    <tr bgcolor="#EFEFEF"> 
+      <td height="25" bgcolor="#EFEFEF"><b><font face="Arial, Helvetica, sans-serif" size="2">Order 
+        Memos By: 
+        <select name="memo_ob">
+          <option {selected_sender} value="Sender">Sender</option>
+          <option {selected_date} value="Date">Date</option>
+          <option {selected_Title} value="Title">Title</option>
+        </select>
+        </font></b></td>
+    </tr>
+    <tr bgcolor="#EFEFEF">
+      <td height="25" bgcolor="#EFEFEF"><font size="2" face="Arial, Helvetica, sans-serif">Choose 
+        how to order the memos posted to the phone.</font></td>
+    </tr>
+  </table>
+</form><!-- END: main -->

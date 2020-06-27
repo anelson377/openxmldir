@@ -1,0 +1,14 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneMenu>
+  <Title>Contact Search</Title>
+  <Prompt>Choose Search Option</Prompt>
+  <MenuItem>
+    <Name>Search for Contacts</Name>
+    <URL>{url_base}searchdirectory.php?global=true&amp;find=contact&amp;name={MAC}</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Search for Phone Owners</Name>
+    <URL>{url_base}searchdirectory.php?global=true&amp;find=phone&amp;name={MAC}</URL>
+  </MenuItem>
+</CiscoIPPhoneMenu>
+<!-- END: main -->

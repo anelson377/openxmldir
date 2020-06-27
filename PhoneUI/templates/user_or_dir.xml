@@ -1,0 +1,14 @@
+<!-- BEGIN: main -->
+<CiscoIPPhoneMenu>
+  <Title>Search Results</Title>
+  <Prompt>Choose Option</Prompt>
+  <MenuItem>
+    <Name>User Results ({num_user})</Name>
+    <URL>{url_base}searchdirectory.php?name={MAC}&amp;srch=true</URL>
+  </MenuItem>
+  <MenuItem>
+    <Name>Directory Results ({num_dir})</Name>
+    <URL>{url_base}searchdirectory.php?name={MAC}&amp;srch=true</URL>
+  </MenuItem>
+</CiscoIPPhoneMenu>
+<!-- END: main -->
