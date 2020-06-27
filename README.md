@@ -8,11 +8,15 @@ The original OpenXMLDir seems to have been abandoned at version 1.2
 
 https://sourceforge.net/projects/open79xxdir/
 
-This is an update of the project just sufficiently to get it to work for our purposes.  
+This is an update of the project just sufficiently to get it to work for our purposes, and not any kind of promise of ongoing maintenance.  
+
+# Changelog
+
+## Version 2
 
 Updated to work with PHP 7.
 
-# Other Notes
+## Version 1.3
 
 Applied fixes from the following URLs:
 -	https://sourceforge.net/p/open79xxdir/bugs/1/
