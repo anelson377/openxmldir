@@ -11,6 +11,9 @@ https://sourceforge.net/projects/open79xxdir/
 This is an update of the project just sufficiently to get it to work for our purposes.  
 
 Updated to work with PHP 7.
+
+# Other Notes
+
 Applied fixes from the following URLs:
 -	https://sourceforge.net/p/open79xxdir/bugs/1/
 
@@ -26,3 +29,6 @@ Did a search/replace on:
 	Searched: "../
 	Replaced: "
 	(fixes relative URLs)
+
+
+At a later point, added an extra field for tracking speed dial numbers
