@@ -37,6 +37,7 @@ if (isset($_POST['action']) || isset($_GET['submit_delete']))
 			$tmp_cell_phone = defang_input($_POST['cell_phone']);
 			$tmp_other_phone = defang_input($_POST['other_phone']);
 			$tmp_owner = defang_input($_POST['owner']);
+			$tmp_speed_dial = defang_input($_POST['speed_dial']);
 			
 			if (defang_input($_POST['sup_prefix_office']) == "sup_prefix_office")
 			{
@@ -104,6 +105,7 @@ if (isset($_POST['action']) || isset($_GET['submit_delete']))
 				custom_number='$tmp_custom_number',
 				cell_phone='$tmp_cell_phone',
 				owner='$tmp_owner',
+				speed_dial='$tmp_speed_dial',
 				sup_prefix_office='$tmp_sup_prefix_office',
 				sup_prefix_home='$tmp_sup_prefix_home',
 				sup_prefix_cell='$tmp_sup_prefix_cell',
@@ -178,6 +180,7 @@ function output_edit_contact ($myId)
 		$xtpl->assign("title",$in['title']);
 		$xtpl->assign("office_phone",$in['office_phone']);
 		$xtpl->assign("home_phone",$in['home_phone']);
+		$xtpl->assign("speed_dial",$in['speed_dial']);
 		
 		if ($in['custom_phone'] != '')
 		{

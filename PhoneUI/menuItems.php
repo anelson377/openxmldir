@@ -76,6 +76,7 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		contacts.sup_prefix_other AS sup_prefix_other,
 		contacts.sup_prefix_custom AS sup_prefix_custom,
 		contacts.title AS title
+		contacts.speed_dial AS speed_dial,
 		FROM contacts
 		WHERE contacts.id = '$urID'";
 	

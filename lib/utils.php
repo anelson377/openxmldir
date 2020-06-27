@@ -1,80 +1,61 @@
-<?php
-/*
+FROM_DATABASE=RV100/M6 [Rage/Radeon Mobility Series] (VAIO PCG-GR214EP/GR214MP/GR215MP/GR314MP/GR315MP)
 
-		utils.php
-		
-		Joe Hopkins <joe@csma.biz>
-		Copyright (c) 2005, McFadden Associates.  All rights reserved.
-*/
-function defang_input ($input)
-{
-	// Remove harmful SQL words and characters from inputs.
-	$chkExp = "(;)|(select)|(insert)|(update)|(delete)|(drop)|(')";
-	$output = trim(eregi_replace($chkExp, "", $input));
-	
-	$output = trim(eregi_replace("&amp;", "&", $output));
-	$output = trim(eregi_replace("&", "&amp;", $output));
-	return $output;
-}
+pci:v00001002d00004C59sv0000104Dsd00008140*
+ ID_MODEL_FROM_DATABASE=RV100/M6 [Rage/Radeon Mobility Series] (PCG-Z1SP laptop)
 
+pci:v00001002d00004C59sv00001509sd00001930*
+ ID_MODEL_FROM_DATABASE=RV100/M6 [Rage/Radeon Mobility Series] (Medion MD9703)
 
-/**
- * A temporary method of generating GUIDs of the correct format for our DB.
- * @return String contianing a GUID in the format: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
- *
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
- * All Rights Reserved.
- * Contributor(s): ______________________________________..
-*/
-function create_guid()
-{
-    $microTime = microtime();
-        list($a_dec, $a_sec) = explode(" ", $microTime);
+pci:v00001002d00004C66*
+ ID_MODEL_FROM_DATABASE=RV250/M9 GL [Mobility FireGL 9000/Radeon 9000]
 
-        $dec_hex = sprintf("%x", $a_dec* 1000000);
-        $sec_hex = sprintf("%x", $a_sec);
+pci:v00001002d00004C66sv00001014sd0000054D*
+ ID_MODEL_FROM_DATABASE=RV250/M9 GL [Mobility FireGL 9000/Radeon 9000] (ThinkPad T41)
 
-        ensure_length($dec_hex, 5);
-        ensure_length($sec_hex, 6);
+pci:v00001002d00004C6E*
+ ID_MODEL_FROM_DATABASE=RV250/M9 [Mobility Radeon 9000] (Secondary)
 
-        $guid = "";
-        $guid .= $dec_hex;
-        $guid .= create_guid_section(3);
-        $guid .= '-';
-        $guid .= create_guid_section(5);
-        $guid .= '-';
-        $guid .= create_guid_section(5);
-        $guid .= '-';
-        $guid .= create_guid_section(4);
-        $guid .= '-';
-        $guid .= $sec_hex;
-        $guid .= create_guid_section(4);
+pci:v00001002d00004D46*
+ ID_MODEL_FROM_DATABASE=Rage Mobility 128 AGP 4X/Mobility M4
 
-        return $guid;
+pci:v00001002d00004D52*
+ ID_MODEL_FROM_DATABASE=Theater 550 PRO PCI [ATI TV Wonder 550]
 
-}
+pci:v00001002d00004D53*
+ ID_MODEL_FROM_DATABASE=Theater 550 PRO PCIe
 
-function create_guid_section($characters)
-{
-        $return = "";
-        for($i=0; $i<$characters; $i++)
-        {
-                $return .= sprintf("%x", mt_rand(0,15));
-        }
-        return $return;
-}
+pci:v00001002d00004E44*
+ ID_MODEL_FROM_DATABASE=R300 [Radeon 9700/9700 PRO]
 
-function ensure_length(&$string, $length)
-{
-        $strlen = strlen($string);
-        if($strlen < $length)
-        {
-                $string = str_pad($string,$length,"0");
-        }
-        else if($strlen > $length)
-        {
-                $string = substr($string, 0, $length);
-        }
-}
+pci:v00001002d00004E44sv00001002sd0000515E*
+ ID_MODEL_FROM_DATABASE=R300 [Radeon 9700/9700 PRO] (Radeon ES1000)
 
-?>
+pci:v00001002d00004E44sv00001002sd00005965*
+ ID_MODEL_FROM_DATABASE=R300 [Radeon 9700/9700 PRO] (Radeon ES1000)
+
+pci:v00001002d00004E45*
+ ID_MODEL_FROM_DATABASE=R300 [Radeon 9500 PRO/9700]
+
+pci:v00001002d00004E45sv00001002sd00000002*
+ ID_MODEL_FROM_DATABASE=R300 [Radeon 9500 PRO/9700] (Radeon R300 NE [Radeon 9500 Pro])
+
+pci:v00001002d00004E45sv00001681sd00000002*
+ ID_MODEL_FROM_DATABASE=R300 [Radeon 9500 PRO/9700] (Hercules 3D Prophet 9500 PRO [Radeon 9500 Pro])
+
+pci:v00001002d00004E46*
+ ID_MODEL_FROM_DATABASE=R300 [Radeon 9600 TX]
+
+pci:v00001002d00004E47*
+ ID_MODEL_FROM_DATABASE=R300 GL [FireGL X1]
+
+pci:v00001002d00004E48*
+ ID_MODEL_FROM_DATABASE=R350 [Radeon 9800 Series]
+
+pci:v00001002d00004E49*
+ ID_MODEL_FROM_DATABASE=R350 [Radeon 9800]
+
+pci:v00001002d00004E4A*
+ ID_MODEL_FROM_DATABASE=R360 [Radeon 9800 XXL/XT]
+
+pci:v00001002d00004E4Asv00001002sd00004E4A*
+ ID_MODEL_FROM_DATABASE=R360 [Radeon 9800 XXL/XT] (R360 [Radeon 9800

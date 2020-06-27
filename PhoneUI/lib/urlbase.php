@@ -1,6 +1,6 @@
 <?php 
 
-	$url_end = 'PhoneUI/';
+	$url_end = 'openxmldir/PhoneUI/';
 	
 	
 	//URL has been modified

@@ -22,6 +22,7 @@ CREATE TABLE `contacts` (
   `cell_phone` varchar(100) default '',
   `date` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   `owner` varchar(100) NOT NULL default '',
+  `speed_dial` tinyint(4) default '0',
   `custom_phone` varchar(100) default '',
   `custom_number` varchar(100) default '',
   `sup_prefix_office` tinyint(4) default '0',

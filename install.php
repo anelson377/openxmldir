@@ -7,7 +7,7 @@ require_once "lib/utils.php";
 require_once "lib/xtpl.php";
 require_once "lib/mysql.php";
 
-if ($installed == "111true")
+if ($installed == "true")
 {
 	//database installation has already occurred
 	$xtpl=new XTemplate ("WebUI/modules/templates/install.html");
