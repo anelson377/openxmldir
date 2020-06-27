@@ -21,36 +21,21 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 	//Security to stop unregistered users from going any further if 'Phone Security' is on. XML images cannot be templated with XTPL.
 	require_once "templates/img_sec_breach.php";
 
-} elseif (isset($_GET['srch']))
+} elseif (try_get('srch'))
 //User has sent all information needed to search
 {	
-	if ($_GET['srch'] == "contact")
+	if (try_get('srch') == "contact")
 	{
 		//User is searching for a contact
-		
-		if ($_GET['lname'] != 'any' && $_GET['lname'] != '')
-		{
-			$varLN = defang_input($_GET['lname']).'%';
-		} else {
-			$varLN = '%';//% returns all
-		}
-		if ($_GET['fname'] != 'any' && $_GET['fname'] != '')
-		{
-			$varFN = defang_input($_GET['fname']).'%';
-		} else {
-			$varFN = '%';//% returns all
-		}
-		if ($_GET['company'] != 'any' && $_GET['company'] != '')
-		{
-			$varCP = defang_input($_GET['company']).'%';
-		} else {
-			$varCP = '%';//% returns all
-		}
-		
-		if (isset($_GET['search1']))
+
+		$varLN = try_defang('lname');
+		$varFN = try_defang('fname');
+		$varCP = try_defang('company');
+
+		if (try_get('search1'))
 		//user is searching specific directory
 		{
-			$dirID = defang_input($_GET['search1']);
+			$dirID = defang_input(try_get('search1'));
 			$dir = "AND contacts.member_of = '".$dirID."'";
 		} else {
 		//user is doing a global search	
@@ -63,15 +48,15 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		list_contacts ($style,$varLN,$varFN,$varCP,$MAC,$dir,$find);
 	} else {
 		//User is searhing for a phone
-		if ($_GET['lname'] != 'any' && $_GET['lname'] != '')
+		if (try_get('lname') != 'any' && try_get('lname') != '')
 		{
-			$varLN = defang_input($_GET['lname']).'%';
+			$varLN = defang_input(try_get('lname')).'%';
 		} else {
 			$varLN = '%';//% returns all
 		}
-		if ($_GET['fname'] != 'any' && $_GET['fname'] != '')
+		if (try_get('fname') != 'any' && try_get('fname') != '')
 		{
-			$varFN = defang_input($_GET['fname']).'%';
+			$varFN = defang_input(try_get('fname')).'%';
 		} else {
 			$varFN = '%';//% returns all
 		}
@@ -84,10 +69,10 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		
 		list_contacts ($style,$varLN,$varFN,$varCP,$MAC,$dir,$find);
 	}
-} elseif (isset($_GET['dir'])) {
+} elseif (try_get('dir')) {
 //User screen to input query to search a specific directory	
 	
-	$dir1 = defang_input($_GET['dir']);//get directory user wants to search
+	$dir1 = defang_input(try_get('dir'));//get directory user wants to search
 	
 	$xtpl=new XTemplate ("templates/dir_search.xml");
 	$xtpl->assign("url_base",$URLBase);
@@ -96,14 +81,14 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 	$xtpl->parse("main");
 	$xtpl->out("main");
 
-} elseif (isset($_GET['specific']))  {
+} elseif (try_get('specific'))  {
 	//Dispay list of directories that can be searched
 
 	$per_page = 31;//number of contacts displayed on each page
 		
-		if (isset($_GET['start']))
+		if (try_get('start'))
 		{
-			$start = defang_input($_GET['start']);
+			$start = defang_input(try_get('start'));
 			$limitstart = 'LIMIT '.$start.','.$per_page;
 			
 		} else {
@@ -187,11 +172,11 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		$xtpl->out("main");
 	}
 	
-} elseif (isset($_GET['global'])) {
+} elseif (try_get('global')) {
 	//Get Search Query from what user has entered in on phone
-	if (isset($_GET['find']))
+	if (try_get('find'))
 	{
-		if ($_GET['find'] == "contact")
+		if (try_get('find') == "contact")
 		{
 			//user wants to find contact
 			$xtpl=new XTemplate ("templates/glo_search.xml");
@@ -245,9 +230,9 @@ function list_contacts ($style,$varLN,$varFN,$varCP,$MAC,$dir,$find)
 	{
 		$per_page = 31;//number of contacts displayed on each page
 		
-		if (isset($_GET['start']))
+		if (try_get('start'))
 		{
-			$start = defang_input($_GET['start']);
+			$start = defang_input(try_get('start'));
 			$limitstart = 'LIMIT '.$start.','.$per_page;
 			
 		} else {
@@ -422,13 +407,13 @@ function list_contacts ($style,$varLN,$varFN,$varCP,$MAC,$dir,$find)
 		//Take out '%' before showing user what they searched for that found 0 results
 		if ($varLN != '%')
 		{
-			$varLN = trim(eregi_replace("%", ",", $varLN));
+			$varLN = trim(preg_replace("/%/i", ",", $varLN));
 		} else {
 			$varLN= '- All -,';
 		}
 		if ($varFN != '%')
 		{
-			$varFN = trim(eregi_replace("%", ",", $varFN));
+			$varFN = trim(preg_replace("/%/i", ",", $varFN));
 		} else {
 			$varFN= '- All -,';
 		}
@@ -436,7 +421,7 @@ function list_contacts ($style,$varLN,$varFN,$varCP,$MAC,$dir,$find)
 		{
 			if ($varCP != '%')
 			{
-				$varCP = trim(eregi_replace("%", ",", $varCP));
+				$varCP = trim(preg_replace("/%/i", ",", $varCP));
 			} else {
 				$varCP= '- All -';
 			}

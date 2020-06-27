@@ -38,16 +38,16 @@ function output_view_phones ()
 	$xtpl=new XTemplate ("WebUI/modules/templates/view_phones.html");
 
 	//custum order by
-	if (isset($_GET['ob']))
+	if (try_get('ob'))
 	{
-		if ($_GET['ob'] == "ob_MAC")
+		if (try_get('ob') == "ob_MAC")
 		{
 			$ob = "MAC";
-		} elseif ($_GET['ob'] == "ob_access_lvl") { 
+		} elseif (try_get('ob') == "ob_access_lvl") { 
 			$ob = "access_lvl";
-		} elseif ($_GET['ob'] == "ob_ln") { 
+		} elseif (try_get('ob') == "ob_ln") { 
 			$ob = "lname";
-		} elseif ($_GET['ob'] == "ob_num") { 
+		} elseif (try_get('ob') == "ob_num") { 
 			$ob = "number";
 		} else {
 			$ob = "MAC";

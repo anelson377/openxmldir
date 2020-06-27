@@ -10,16 +10,16 @@
 $xtpl=new XTemplate ("WebUI/modules/templates/edit_contact.html");
 
 //Checks if id is known, stores in variable
-if (isset($_GET['id'])) 
-	$tmp_id = defang_input($_GET['id']);
+if (try_get('id'))
+	$tmp_id = defang_input(try_get('id'));
 
 
-if (isset($_POST['action']) || isset($_GET['submit_delete']))
+if (isset($_POST['action']) || try_get('submit_delete'))
 {
 	//User wants to save, cancel, or delete object
 	
 	$myAction = defang_input($_POST['action']);
-	if ($myAction == "edit" || $_GET['submit_delete'] == 'yes')
+	if ($myAction == "edit" || try_get('submit_delete') == 'yes')
 	{
 		if (isset($_POST['submit_save']))
 		{
@@ -118,15 +118,15 @@ if (isset($_POST['action']) || isset($_GET['submit_delete']))
 					
 			header("Location: index.php?module=view_contacts");		
 			
-		} else if (isset($_POST['submit_delete']) || $_GET['submit_delete'] == 'yes') {
+		} else if (isset($_POST['submit_delete']) || try_get('submit_delete') == 'yes') {
 			// Deleting
 			$tmp_id = defang_input($tmp_id);
 			delete_contact($tmp_id);
-			header("Location: index.php?module=view_contacts&mbr_of=".$_GET['mbr_of']);
+			header("Location: index.php?module=view_contacts&mbr_of=".try_get('mbr_of'));
 			
 		} else if (isset($_POST['submit_cancel'])) {
 			// Cancel
-			if ($_GET['new'] == "true")
+			if (try_get('new') == "true")
 			{
 				delete_contact($tmp_id);
 			}

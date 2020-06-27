@@ -7,16 +7,16 @@
 */
 
 //Checks if id is known, stores in variable
-if (isset($_GET['id']))
+if (try_get('id'))
 {
-	$tmp_id = defang_input($_GET['id']);
+	$tmp_id = defang_input(try_get('id'));
 }
 
-if (isset($_POST['action']) || $_GET['submit_delete'] == yes)
+if (isset($_POST['action']) || try_get('submit_delete') == yes)
 {
 	//User wants to save, cancel, or delete memo
 	$myAction = defang_input($_POST['action']);
-	if ($myAction == "edit" || $_GET['submit_delete'] == yes)
+	if ($myAction == "edit" || try_get('submit_delete') == yes)
 	{
 		if (isset($_POST['submit_save']))
 		{
@@ -41,13 +41,13 @@ if (isset($_POST['action']) || $_GET['submit_delete'] == yes)
 										
 		} else if (isset($_POST['submit_cancel'])) {
 			// Cancel
-			if ($_GET['new'] == 'true')
+			if (try_get('new') == 'true')
 			{
 				delete_memo($tmp_id);
 			}	
 			header("Location: index.php?module=view_memos");
 		
-		} else if (isset($_POST['submit_delete']) || $_GET['submit_delete'] == 'yes') {
+		} else if (isset($_POST['submit_delete']) || try_get('submit_delete') == 'yes') {
 				// Deleting
 				if ($tmp_id != '0') //prevent user from deleting main container
 				{

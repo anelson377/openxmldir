@@ -6,9 +6,9 @@
 	Copyright (c) 2005, McFadden Associates.  All rights reserved.
 */
 
-if (isset($_GET['id']))
+if (try_get('id'))
 {
-	$container = defang_input($_GET['id']);
+	$container = defang_input(try_get('id'));
 }
 
 if (isset($_POST['submit_confirm']))
@@ -41,7 +41,7 @@ if (isset($_POST['submit_confirm']))
 render_HeaderSidebar("Open 79XX XML Directory - Warning");
 
 //Checks if id is known, stores in variable
-if (isset($_GET['id']))
+if (try_get('id'))
 {
 	$xtpl=new XTemplate ("WebUI/modules/templates/correct_ob_members.html");
 	

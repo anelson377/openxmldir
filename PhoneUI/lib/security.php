@@ -26,10 +26,10 @@ if ($sy = mysql_fetch_assoc($thesecRES))
 	$ph_prfx = 'No';
 }
 
-if (isset($_GET['name']))
+if (try_get('name'))
 {
 	// Get MAC Address
-	$MAC = defang_input($_GET['name']);
+	$MAC = defang_input(try_get('name'));
 	
 	// SQL to check MAC
 	$macQuery = "SELECT

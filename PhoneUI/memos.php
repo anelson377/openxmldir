@@ -21,9 +21,9 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 	//Security to stop unregistered users from going any further if 'Phone Security' is on.  
 	require_once "templates/img_sec_breach.php";
 	
-} elseif (isset($_GET['mem'])) {
+} elseif (try_get('mem')) {
 	// We are selecting a memo
-	$memID = defang_input($_GET['mem']);
+	$memID = defang_input(try_get('mem'));
 	$memQuery = "SELECT 
 	memos.date AS date,
 	memos.id AS id,
@@ -75,9 +75,9 @@ function list_memos ($ob_sec,$MAC,$registered)
 	
 	$per_page = 27;//number of memos displayed on each page
 		
-		if (isset($_GET['start']))
+		if (try_get('start'))
 		{
-			$start = defang_input($_GET['start']);
+			$start = defang_input(try_get('start'));
 			$limitstart = 'LIMIT '.$start.','.$per_page;
 			
 		} else {
@@ -111,10 +111,10 @@ function list_memos ($ob_sec,$MAC,$registered)
 		
 		
 	//Get order by preferences
-	if (isset($_GET['ob']))
+	if (try_get('ob'))
 	{
 		//user has chosen an option from the phone
-		$memo_ob = defang_input($_GET['ob']);
+		$memo_ob = defang_input(try_get('ob'));
 		$ob_saved =  "&amp;ob=".$memo_ob; //save for the 'more' object
 		if ($memo_ob == "Date")
 		{

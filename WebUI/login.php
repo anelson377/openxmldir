@@ -15,9 +15,9 @@ require_once "../lib/utils.php";
 require_once "../lib/xtpl.php";
 
 // Log Out
-if (isset($_GET['module']) && $_POST['username'] == "")
+if (try_get('module') && $_POST['username'] == "")
 {
-	$ModuleName = defang_input($_GET['module']);
+	$ModuleName = defang_input(try_get('module'));
 	if ($ModuleName == "logout")
 	{
 		session_destroy();
@@ -55,7 +55,7 @@ if ($installed == 'false')
 } else {
 	$installed == 'true';
 }
-if (defang_input($_GET['newuser']) == "true")
+if (defang_input(try_get('newuser')) == "true")
 {
 	$errMsg = "It recommended that you change your password after logging in";
 }

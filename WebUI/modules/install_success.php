@@ -6,10 +6,10 @@ require_once "../../lib/xtpl.php";
 require_once "../../lib/mysql.php";
 require_once "../../PhoneUI/lib/urlbase.php";
 
-$database_name = defang_input($_GET['database_name']);
-$database_server = defang_input($_GET['database_server']);
-$database_login = defang_input($_GET['database_login']);
-$database_password = defang_input($_GET['database_password']);
+$database_name = defang_input(try_get('database_name'));
+$database_server = defang_input(try_get('database_server'));
+$database_login = defang_input(try_get('database_login'));
+$database_password = defang_input(try_get('database_password'));
 
 
 if (isset($_POST['url_base']))
@@ -120,7 +120,7 @@ if (isset($_POST['url_base']))
 	}
 	
 	
-} else if(isset($_GET['urlupdate']))
+} else if(try_get('urlupdate'))
 {
 	$xtpl=new XTemplate ("templates/install_success.html");
 	

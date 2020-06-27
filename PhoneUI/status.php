@@ -24,22 +24,22 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 	//Security to stop unregistered users from going any further if 'Phone Security' is on.  XML images cannot be templated with XTPL.
 	require_once "templates/img_sec_breach.php";
 } else {
-	if (isset($_GET['ur'])) 
+	if (try_get('ur'))
 	{
-		$urMAC = defang_input($_GET['ur']);
+		$urMAC = defang_input(try_get('ur'));
 		show_status($MAC,$urMAC);
 		
-	} elseif (isset($_GET['view_my_status'])) {
+	} elseif (try_get('view_my_status')) {
 		
 		show_status($MAC,$MAC);
 		
-	} elseif (isset($_GET['others_status'])) {
+	} elseif (try_get('others_status')) {
 	
 		//User has inputed all information needed 
 		//A list of the users in a certain location 
 		//according to their status is now displayed
 		
-		$others_status = defang_input($_GET['others_status']);
+		$others_status = defang_input(try_get('others_status'));
 		
 		if ($others_status == 'in')
 		{
@@ -55,9 +55,9 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		
 		$per_page = 31;//number of phones displayed on each page
 			
-		if (isset($_GET['start']))
+		if (try_get('start'))
 		{
-			$start = defang_input($_GET['start']);
+			$start = defang_input(try_get('start'));
 			$limitstart = 'LIMIT '.$start.','.$per_page;
 			
 		} else {
@@ -159,7 +159,7 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		$xtpl->parse("main");
 		$xtpl->out("main");
 		
-	} elseif (isset($_GET['status_others_index'])) {
+	} elseif (try_get('status_others_index')) {
 		//user has selected to view others' status
 		//display screen with mroe specific options wiht who to show
 		$xtpl=new XTemplate ("templates/status_others_index.xml");
@@ -175,11 +175,11 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		$xtpl->parse("main");
 		$xtpl->out("main");
 		
-	} elseif (isset($_GET['custom_msg'])) {
+	} elseif (try_get('custom_msg')) {
 		
 		//Get user's location and custom message 
-		$tmp_assign_msg = defang_input($_GET['custom_msg']);
-		$tmp_location = defang_input($_GET['location']);
+		$tmp_assign_msg = defang_input(try_get('custom_msg'));
+		$tmp_location = defang_input(try_get('location'));
 		$tmp_date = time();
 		
 		//save the status to database
@@ -194,22 +194,22 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		//Display status change success screen to user
 		show_status($MAC,$MAC);
 		
-	} elseif (isset($_GET['location'])) {
-		if ($_GET['msg'] == '0')
+	} elseif (try_get('location')) {
+		if (try_get('msg') == '0')
 		{
 			//user requests a custom msg
 			$xtpl=new XTemplate ("templates/status_custom.xml");
 			
 			$xtpl->assign("MAC",$MAC);
 			$xtpl->assign("url_base",$URLBase);
-			$xtpl->assign("location",defang_input($_GET['location']));
+			$xtpl->assign("location",defang_input(try_get('location')));
 			$xtpl->parse("main");
 			$xtpl->out("main");
 			
 		} else {
 			//Grab data from user
-			$tmp_assign_msg = defang_input($_GET['msg']);
-			$tmp_location = defang_input($_GET['location']);
+			$tmp_assign_msg = defang_input(try_get('msg'));
+			$tmp_location = defang_input(try_get('location'));
 			$tmp_date = time();
 		
 			//save to data base
@@ -225,9 +225,9 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		//Display user their status
 		show_status($MAC,$MAC);
 		}
-	} elseif (isset($_GET['in_office'])) {
+	} elseif (try_get('in_office')) {
 		
-		$tmp_in_office = defang_input($_GET['in_office']);
+		$tmp_in_office = defang_input(try_get('in_office'));
 		
 		$xtpl=new XTemplate ("templates/spec_status.xml");
 		$xtpl->assign("MAC",$MAC);
@@ -273,7 +273,7 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		$xtpl->parse("main");
 		$xtpl->out("main");
 	
-	} elseif (isset($_GET['my_status'])) {
+	} elseif (try_get('my_status')) {
 		//User has requested to change their status
 		if ($registered == "TRUE")
 		{
@@ -440,8 +440,8 @@ function parse_phone ($in_phone)
 {
 	//remove extraneous characters from phone number
 	$chk_phone = trim($in_phone);
-	$chkExp = "(\-)|(\.)|(\()|(\))|(\ )"; 
-	$out_phone = trim(eregi_replace($chkExp, "", $chk_phone));
+	$chkExp = "/(\-)|(\.)|(\()|(\))|(\ )/i"; 
+	$out_phone = trim(preg_replace($chkExp, "", $chk_phone));
 	return $out_phone;
 }
 

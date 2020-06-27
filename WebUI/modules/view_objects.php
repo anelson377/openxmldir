@@ -46,7 +46,7 @@ function output_view_objects ()
 	{
 		$tmp_drop_type = defang_input($_POST['type']);
 	} else {
-		$tmp_drop_type = defang_input($_GET['drop_type']);
+		$tmp_drop_type = defang_input(try_get('drop_type'));
 	}
 	
 	$object_types = array('- Show All -','Container','Link','Contact Holder');
@@ -66,7 +66,7 @@ function output_view_objects ()
 	{
 		$member_of_container = defang_input($_POST['member_of']);
 	} else {
-		$member_of_container = defang_input($_GET['mbr_of']);
+		$member_of_container = defang_input(try_get('mbr_of'));
 	}
 	//Assign containers to dropdown
 	$member_of_sql = "SELECT * FROM object WHERE type = 'container'";
@@ -115,34 +115,34 @@ function output_view_objects ()
 	}
 	
 	//custum order by
-	if (isset($_GET['ob']))
+	if (try_get('ob'))
 	{
-		if ($_GET['ob'] == "ob_type")
+		if (try_get('ob') == "ob_type")
 		{
 			$ob = "type";
-		} elseif ($_GET['ob'] == "ob_title") { 
+		} elseif (try_get('ob') == "ob_title") { 
 			$ob = "title";
-		} elseif ($_GET['ob'] == "ob_access") { 
+		} elseif (try_get('ob') == "ob_access") { 
 			$ob = "access";
 		}
 	} else {
 	$ob = "title";
 	}
 	
-	if (isset($_POST['member_of']) || isset($_GET['ob']) || isset($_GET['drop_type']))
+	if (isset($_POST['member_of']) || try_get('ob') || try_get('drop_type'))
 	{
 		//user has hit the search
 		if (isset($_POST['member_of']))
 		{
 			$xtpl->assign("mbr_of",$_POST['member_of']);
-		} elseif (isset($_GET['mbr_of'])) {
-			$xtpl->assign("mbr_of",$_GET['mbr_of']);
+		} elseif (try_get('mbr_of')) {
+			$xtpl->assign("mbr_of",try_get('mbr_of'));
 		}
 		if (isset($_POST['type']))
 		{
 			$xtpl->assign("drop_type",$_POST['type']);
-		} elseif (isset($_GET['drop_type'])) {
-			$xtpl->assign("drop_type",$_GET['drop_type']);
+		} elseif (try_get('drop_type')) {
+			$xtpl->assign("drop_type",try_get('drop_type'));
 		}
 		$xtpl->parse("column");//show columns
 		$xtpl->out("column");

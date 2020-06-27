@@ -52,7 +52,7 @@ function output_view_contacts ()
 	{
 		$in_member = defang_input($_POST['member_of']);
 	} else {
-		$in_member = defang_input($_GET['mbr_of']);
+		$in_member = defang_input(try_get('mbr_of'));
 	}
 	
 	
@@ -68,28 +68,28 @@ function output_view_contacts ()
 
 	
 	//custum order by
-	if (isset($_GET['ob']))
+	if (try_get('ob'))
 	{
-		if ($_GET['ob'] == "ob_ln")
+		if (try_get('ob') == "ob_ln")
 		{
 			$ob = "lname";
-		} elseif ($_GET['ob'] == "ob_title") { 
+		} elseif (try_get('ob') == "ob_title") { 
 			$ob = "title";
-		} elseif ($_GET['ob'] == "ob_company") { 
+		} elseif (try_get('ob') == "ob_company") { 
 			$ob = "company";
 		}
 	} else {
 	$ob = "lname";
 	}
 	
-	if (isset($_POST['member_of']) || isset($_GET['ob']) || isset($_GET['mbr_of']))
+	if (isset($_POST['member_of']) || try_get('ob') || try_get('mbr_of'))
 	{
 		//user has hit a search
 		if (isset($_POST['member_of']))
 		{
 			$xtpl->assign("mbr_of",$_POST['member_of']);
-		} elseif (isset($_GET['mbr_of'])) {
-			$xtpl->assign("mbr_of",$_GET['mbr_of']);
+		} elseif (try_get('mbr_of')) {
+			$xtpl->assign("mbr_of",try_get('mbr_of'));
 		}
 		$xtpl->parse("main.column");//show columns
 		//user has submited a search, show the contacts

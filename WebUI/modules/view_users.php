@@ -39,15 +39,15 @@ function output_view_users ()
 
 	// Content
 	
-	//custum order by
-	if (isset($_GET['ob']))
+	//custom order by
+	if (try_get('ob'))
 	{
-		if ($_GET['ob'] == "ob_username")
+		if (try_get('ob') == "ob_username")
 		{
 			$ob = "username";
-		} elseif ($_GET['ob'] == "ob_email") { 
+		} elseif (try_get('ob') == "ob_email") { 
 			$ob = "email";
-		} elseif ($_GET['ob'] == "ob_account_type") { 
+		} elseif (try_get('ob') == "ob_account_type") { 
 			$ob = "account_type";
 		}
 	} else {

@@ -23,9 +23,9 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 	//Security to stop unregistered users from going any further if 'Phone Security' is on.  XML images cannot be templated with XTPL.
 	require_once "templates/img_sec_breach.php";
 
-} elseif (isset($_GET['obj'])) {
+} elseif (try_get('obj')) {
 	// We are selecting an object
-	$obID = defang_input($_GET['obj']);
+	$obID = defang_input(try_get('obj'));
 	$objQuery = "SELECT 
 	object.member_of AS member_of,
 	object.id AS id,
@@ -56,9 +56,9 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 			list_objects (0,'Main',$registered,$ob_sec,$ph_sec);
 		}
 	}
-} elseif (isset($_GET['ur'])) {
+} elseif (try_get('ur')) {
 	//Specific contact has been selected (style was seperate)
-	$urID = defang_input($_GET['ur']);
+	$urID = defang_input(try_get('ur'));
 	$browseQuery = "SELECT 
 		contacts.id AS id,
 		contacts.lname AS lname,
@@ -182,9 +182,9 @@ function list_contacts ($member_cat,$style,$obID,$MAC)
 	{
 		$per_page = 31;//number of contacts displayed on each page
 		
-		if (isset($_GET['start']))
+		if (try_get('start'))
 		{
-			$start = defang_input($_GET['start']);
+			$start = defang_input(try_get('start'));
 			$limitstart = 'LIMIT '.$start.','.$per_page;
 			
 		} else {
@@ -375,9 +375,9 @@ function list_objects ($member_of,$title,$MAC,$registered,$ob_sec,$ph_sec)
 	
 	$per_page = 31;//number of contacts displayed on each page
 		
-		if (isset($_GET['start']))
+		if (try_get('start'))
 		{
-			$start = defang_input($_GET['start']);
+			$start = defang_input(try_get('start'));
 			$limitstart = 'LIMIT '.$start.','.$per_page;
 			
 		} else {
@@ -478,8 +478,8 @@ function parse_phone ($in_phone)
 {
 	//remove extraneous characters from phone number
 	$chk_phone = trim($in_phone);
-	$chkExp = "(\-)|(\.)|(\()|(\))|(\ )"; 
-	$out_phone = trim(eregi_replace($chkExp, "", $chk_phone));
+	$chkExp = "/(\-)|(\.)|(\()|(\))|(\ )/i"; 
+	$out_phone = trim(preg_replace($chkExp, "", $chk_phone));
 	return $out_phone;
 }
 

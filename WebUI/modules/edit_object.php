@@ -9,9 +9,9 @@
 
 //Checks if id is known, stores in variable
 $xtpl=new XTemplate ("WebUI/modules/templates/edit_object.html");
-if (isset($_GET['id']))
+if (try_get('id'))
 {
-	$tmp_id = defang_input($_GET['id']);
+	$tmp_id = defang_input(try_get('id'));
 	
 	$type_chk_query = "SELECT type FROM `object` WHERE id ='$tmp_id'";
 	
@@ -25,11 +25,11 @@ if (isset($_GET['id']))
 		header("Location: index.php?module=view_objects");
 	}
 }
-if (isset($_POST['action']) || $_GET['submit_delete'] == 'yes')
+if (isset($_POST['action']) || try_get('submit_delete') == 'yes')
 {
 	//User wants to save, cancel, or delete object
 	$myAction = defang_input($_POST['action']);
-	if ($myAction == "edit" || $_GET['submit_delete'] == 'yes')
+	if ($myAction == "edit" || try_get('submit_delete') == 'yes')
 	{
 		if (isset($_POST['submit_save']))
 		{
@@ -94,13 +94,13 @@ if (isset($_POST['action']) || $_GET['submit_delete'] == 'yes')
 			}			
 		} else if (isset($_POST['submit_cancel'])) {
 			// Cancel
-			if ($_GET['new'] == "true")
+			if (try_get('new') == "true")
 			{
 				delete_object($tmp_id);
 			}	
 			header("Location: index.php?module=view_objects");
 		
-		} else if (isset($_POST['submit_delete']) || $_GET['submit_delete'] == 'yes') {
+		} else if (isset($_POST['submit_delete']) || try_get('submit_delete') == 'yes') {
 			// Deleting
 			$tmp_id = defang_input($tmp_id);
 			
@@ -147,7 +147,7 @@ function carefull_delete ($tmp_id,$current_type)
 	if ($current_type == "Link")
 	{
 		delete_object($tmp_id);
-		header("Location: index.php?module=view_objects&mbr_of=".$_GET['mbr_of']."&drop_type=".$_GET['drop_type']);
+		header("Location: index.php?module=view_objects&mbr_of=".try_get('mbr_of')."&drop_type=".try_get('drop_type'));
 	
 	} elseif ($current_type == "Category"){
 	
@@ -171,7 +171,7 @@ function carefull_delete ($tmp_id,$current_type)
 			if ($tmp_id != '0') 
 			{
 				delete_object($tmp_id);
-				header("Location: index.php?module=view_objects&mbr_of=".$_GET['mbr_of']."&drop_type=".$_GET['drop_type']);
+				header("Location: index.php?module=view_objects&mbr_of=".try_get('mbr_of')."&drop_type=".try_get('drop_type'));
 			} else {
 				//prevent user from deleting main container
 				header("Location: index.php?module=delete_error");
@@ -179,7 +179,7 @@ function carefull_delete ($tmp_id,$current_type)
 		}
 	} else {
 		delete_object($tmp_id);
-		header("Location: index.php?module=view_objects&mbr_of=".$_GET['mbr_of']."&drop_type=".$_GET['drop_type']);
+		header("Location: index.php?module=view_objects&mbr_of=".try_get('mbr_of')."&drop_type=".try_get('drop_type'));
 	}
 }
 

@@ -57,16 +57,16 @@ function output_view_memos()
 		$memo_ob = "Date";
 	}
 	//custum order by
-	if (isset($_GET['ob']))
+	if (try_get('ob'))
 	{
-		if ($_GET['ob'] == "ob_date")
+		if (try_get('ob') == "ob_date")
 		{
 			$ob = "date DESC";
-		} elseif ($_GET['ob'] == "ob_title") { 
+		} elseif (try_get('ob') == "ob_title") { 
 			$ob = "title";
-		} elseif ($_GET['ob'] == "ob_access") { 
+		} elseif (try_get('ob') == "ob_access") { 
 			$ob = "access";
-		} elseif ($_GET['ob'] == "ob_sender") { 
+		} elseif (try_get('ob') == "ob_sender") { 
 			$ob = "sender";
 		}
 	} else {

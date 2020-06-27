@@ -248,7 +248,6 @@ function scan_globals() {
 	also builds the reverse parse order.
 */
 
-
 function maketree($con,$block) {
 	$con2=explode($this->block_start_delim,$con);
 	$level=0;
@@ -257,30 +256,36 @@ function maketree($con,$block) {
 	reset($con2);
 	while(list($k,$v)=each($con2)) {
 		$patt="($this->block_start_word|$this->block_end_word)\s*(\w+)\s*$this->block_end_delim(.*)";
+		$parent_name = implode(".", $block_names);
 		if (preg_match_all("/$patt/ims",$v,$res, PREG_SET_ORDER)) {
 			// $res[0][1] = BEGIN or END
 			// $res[0][2] = block name
 			// $res[0][3] = kinda content
 			if ($res[0][1]==$this->block_start_word) {
-				$parent_name=implode(".",$block_names);
+				$parent_name = implode(".", $block_names);
 				$block_names[++$level]=$res[0][2];							/* add one level - array("main","table","row")*/
 				$cur_block_name=implode(".",$block_names);	/* make block name (main.table.row) */
 				$this->block_parse_order[]=$cur_block_name;	/* build block parsing order (reverse) */
+				if(! isset($blocks[$cur_block_name])) { $blocks[$cur_block_name] = ''; }
 				$blocks[$cur_block_name].=$res[0][3];					/* add contents */
+				if(! isset($blocks[$parent_name])) { $blocks[$parent_name] = ''; }
 				$blocks[$parent_name].="{_BLOCK_.$cur_block_name}";	/* add {_BLOCK_.blockname} string to parent block */
 				$this->sub_blocks[$parent_name][]=$cur_block_name;		/* store sub block names for autoresetting and recursive parsing */
 				$this->sub_blocks[$cur_block_name][]="";		/* store sub block names for autoresetting */
 			} else if ($res[0][1]==$this->block_end_word) {
 				unset($block_names[$level--]);
-				$parent_name=implode(".",$block_names);
+				$parent_name = implode(".",$block_names);
 				$blocks[$parent_name].=$res[0][3];	/* add rest of block to parent block */
   			}
 		} else { /* no block delimiters found */
-			$blocks[implode(".",$block_names)].=$this->block_start_delim.$v;
+			$parent_name = implode(".", $block_names);
+			if(! isset($blocks[$parent_name])) { $blocks[$parent_name] = ''; }
+			$blocks[$parent_name] .= $this->block_start_delim.$v;
 		}
 	}
-	return $blocks;	
+	return $blocks;
 }
+
 
 
 
@@ -335,7 +340,7 @@ function r_getfile($file) {
 	$text=$this->getfile($file);
 	while (preg_match($this->file_delim,$text,$res)) {
 		$text2=$this->getfile($res[1]);
-		$text=preg_replace("'".preg_quote($res[0])."'",$text2,$text);
+		$text=preg_replace("/'".preg_quote($res[0])."'/",$text2,$text);
 	}
 	return $text;
 }

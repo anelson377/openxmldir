@@ -7,15 +7,15 @@
 */
 
 //Checks if id is known, stores in variable
-if (isset($_GET['id'])) $tmp_id = defang_input($_GET['id']);
+if (try_get('id')) $tmp_id = defang_input(try_get('id'));
 
 $user = "good"; //defaults user to good before chances of it beging invalid
 
-if (isset($_POST['action']) || isset($_GET['submit_delete']))
+if (isset($_POST['action']) || try_get('submit_delete'))
 {
 	//User wants to save, cancel, or delete object
 	$myAction = defang_input($_POST['action']);
-	if ($myAction == "edit" || $_GET['submit_delete'] == yes)
+	if ($myAction == "edit" || try_get('submit_delete') == yes)
 	{
 		if (isset($_POST['submit_save']))
 		{
@@ -62,7 +62,7 @@ if (isset($_POST['action']) || isset($_GET['submit_delete']))
 					header("Location: index.php?module=view_users");
 				}	
 			}
-		} else if (isset($_POST['submit_delete']) || $_GET['submit_delete'] == 'yes') {
+		} else if (isset($_POST['submit_delete']) || try_get('submit_delete') == 'yes') {
 			// Deleting
 			$tmp_id = defang_input($tmp_id);
 			if ($tmp_id != '0' && $tmp_id != $_SESSION['user_id'])
@@ -76,7 +76,7 @@ if (isset($_POST['action']) || isset($_GET['submit_delete']))
 
 		} else if (isset($_POST['submit_cancel'])) {
 			// Cancel
-			if ($_GET['new'] == "true")
+			if (try_get('new') == "true")
 			{
 				delete_user($tmp_id);
 			}

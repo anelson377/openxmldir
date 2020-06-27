@@ -12,7 +12,7 @@
 
 
 
-if($_GET['view'] == "print")
+if(try_get('view') == "print")
 {
 	$xtpl=new XTemplate ("WebUI/modules/templates/tree_print.html");
 	$member_of_sql = "SELECT * FROM object WHERE member_of = '0' ORDER BY 'title'";

@@ -17,10 +17,10 @@ require_once "lib/xtpl.php";
 if (isset($_SESSION['user_id']))
 {
 	// Login OK
-	if (isset($_GET['module']))
+	if (try_get('module'))
 	{
 		// Choose which module to view
-		$ModuleName = defang_input($_GET['module']);
+		$ModuleName = defang_input(try_get('module'));
 		if ($ModuleName == "menu"){
 			require_once "WebUI/modules/menu.php";
 	
