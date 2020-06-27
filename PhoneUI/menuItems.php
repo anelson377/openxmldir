@@ -75,12 +75,16 @@ if ($ph_sec == 'Yes' && $registered == 'FALSE')
 		contacts.sup_prefix_home AS sup_prefix_home,
 		contacts.sup_prefix_other AS sup_prefix_other,
 		contacts.sup_prefix_custom AS sup_prefix_custom,
-		contacts.title AS title
-		contacts.speed_dial AS speed_dial,
+		contacts.title AS title,
+		contacts.speed_dial AS speed_dial
 		FROM contacts
 		WHERE contacts.id = '$urID'";
 	
 	$theContactRES = mysql_query($browseQuery, $db);
+        if(! $theContactRES) {
+		error_log('Invalid query: ' . mysql_error());
+		exit(1);
+	}
 
 	if ($in = mysql_fetch_assoc($theContactRES))
 	{
