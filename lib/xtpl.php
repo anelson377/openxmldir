@@ -94,7 +94,7 @@ function parse ($bname) {
 		if ($sub[0]=="_BLOCK_") {
 			unset($sub[0]);
 			$bname2=implode(".",$sub);
-			$var=$this->parsed_blocks[$bname2];
+			$var=isset($this->parsed_blocks[$bname2]) ? $this->parsed_blocks[$bname2] : '';
 			$nul=(!isset($this->NULL_BLOCK[$bname2])) ? $this->NULL_BLOCK[""] : $this->NULL_BLOCK[$bname2];
 			$var=(empty($var))?$nul:trim($var);
 			$copy=preg_replace("/\{".$v."\}/","$var",$copy);
@@ -107,6 +107,9 @@ function parse ($bname) {
 			$copy=preg_replace("/\{$v\}/","$var",$copy);
 		}
 	} 	
+	if(! isset($this->parsed_blocks[$bname])) {
+		$this->parsed_blocks[$bname] = '';
+	}
 	$this->parsed_blocks[$bname].=$copy;
 	// reset sub-blocks 
 	if ($this->AUTORESET && (!empty($this->sub_blocks[$bname]))) {

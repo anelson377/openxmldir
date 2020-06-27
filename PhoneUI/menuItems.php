@@ -257,6 +257,7 @@ function list_contacts ($member_cat,$style,$obID,$MAC)
 				$tmpTitle = $in2['display_name'];
 				
 				$title = substr($tmpTitle,0,25);
+				$title = preg_replace("/\&\w+$/", '', $title); // Account for "aaaaaaaa aaaaaaa Fish &amp; Chips" being chopped to "aaaaaaaa aaaaaaa Fish &am"
 				
 				$ID = $in2['id'];
 								
